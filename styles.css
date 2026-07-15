@@ -234,10 +234,10 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
   aspect-ratio: 1;
   border-radius: var(--radius);
   background: var(--panel);
-  border: 1px dashed var(--border);
-  display:flex; align-items:center; justify-content:center;
-  font-family: var(--mono); font-size: 12px; color: var(--text-dimmer);
-  text-align:center; padding: 16px;
+  border: 1px solid var(--border);
+  display: block;
+  object-fit: cover;
+  object-position: center 20%;
 }
 .about-text p{ color: var(--text-dim); margin-bottom: 16px; font-size: 15.5px; }
 .about-text strong{ color: var(--text); font-weight: 600; }
