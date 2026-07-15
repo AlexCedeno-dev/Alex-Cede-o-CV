@@ -105,7 +105,52 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
 .navlinks{ display:flex; gap:28px; font-family: var(--mono); font-size:13px; color: var(--text-dim); }
 .navlinks a{ transition: color .2s ease; }
 .navlinks a:hover{ color: var(--cyan); }
-@media (max-width: 640px){ .navlinks{ display:none; } }
+
+.nav-toggle{
+  display:none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 34px; height: 34px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.nav-toggle span{
+  display:block;
+  width: 16px; height: 2px;
+  background: var(--text-dim);
+  transition: transform .2s ease, opacity .2s ease, background .2s ease;
+}
+.nav-toggle:hover{ border-color: rgba(61,224,200,0.35); }
+.nav-toggle:hover span{ background: var(--cyan); }
+.nav-toggle[aria-expanded="true"] span{ background: var(--cyan); }
+.nav-toggle[aria-expanded="true"] span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 640px){
+  .nav-toggle{ display:flex; }
+  .navlinks{
+    display:none;
+    position: absolute;
+    top: 100%; left:0; right:0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 4px 28px 12px;
+  }
+  .navlinks.open{ display:flex; }
+  .navlinks a{
+    padding: 13px 0;
+    border-top: 1px solid var(--border);
+  }
+  .navlinks a:first-child{ border-top:none; }
+}
 
 /* ---------- hero / terminal ---------- */
 .hero{
