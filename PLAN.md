@@ -16,10 +16,12 @@
 - **Accesibilidad:** navegación por teclado funciona (focus-visible ya está definido globalmente); el nuevo botón hamburguesa incluye `aria-label`, `aria-expanded` y `aria-controls`, se cierra con `Escape` y devuelve el foco al botón. No hay imágenes todavía (el avatar es un placeholder de texto), así que no hay `alt` pendiente en esta fase — se revisará en la Fase 2 al insertar la foto real.
 - **Mobile real:** se verificó el layout y el nuevo menú en un viewport de 375×812 (iPhone estándar) vía herramientas de preview; no se detectaron overflows ni elementos cortados. Nota: esta verificación fue en un emulador de viewport, no en un dispositivo físico — si detectas algo raro en tu celular real, avísame.
 
-## Fase 2 — Foto real (pendiente)
+## Fase 2 — Foto real ✅
 
-- Reemplazar el placeholder `#avatarSlot` en `index.html` por un `<img>` con `alt` descriptivo, una vez que se reciba la imagen.
-- Optimizar peso/formato de la imagen antes de subirla.
+- Placeholder `#avatarSlot` reemplazado por `<img>` con `alt="Retrato de Edgar Alejandro Cedeño Suárez"`.
+- Imagen optimizada: redimensionada de 906×1600 a 720px de ancho y comprimida (JPEG progresivo, calidad 75) — de 214KB a ~122KB.
+- `.avatar` ajustado a `object-fit:cover` con recorte cuadrado centrado en el rostro (`object-position: center 20%`), manteniendo borde y radius del sistema de diseño.
+- Nota técnica: se quitaron los atributos `width`/`height` del `<img>` porque, dentro del grid de `.about-grid`, entraban en conflicto con `aspect-ratio:1` del CSS y forzaban la altura natural de la imagen (no cuadrada). El `aspect-ratio` del CSS ya reserva el espacio y evita layout shift, así que no hacían falta.
 
 ## Fase 3 — Sección de proyectos (pendiente)
 
