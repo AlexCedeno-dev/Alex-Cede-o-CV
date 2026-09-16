@@ -1,30 +1,24 @@
-// Terminal boot sequence
-const lines = [
-  { p: 'edgar@sistemas', c: '~$', t: 'whoami' },
+// Ledger fill-in: fields land one at a time, the status lands as a stamp
+const fields = [
   { k: 'nombre', v: 'Edgar Alejandro Cedeño Suárez' },
   { k: 'rol', v: 'Estudiante de Ing. en Sistemas Computacionales' },
   { k: 'ubicación', v: 'Aguascalientes, México' },
   { k: 'stack', v: 'React · Node.js · Angular · MySQL · PHP' },
-  { k: 'estado', v: 'disponible' },
-  { p: 'edgar@sistemas', c: '~$', t: '_' }
+  { k: 'estado', stamp: 'disponible' }
 ];
 
 const term = document.getElementById('termBody');
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function render(i){
-  if(i >= lines.length){ return; }
-  const item = lines[i];
-  const div = document.createElement('div');
-  div.className = 'line';
-  if(item.p){
-    div.innerHTML = item.t === '_'
-      ? `<span class="prompt">${item.p} ${item.c}</span> <span class="cursor"></span>`
-      : `<span class="prompt">${item.p} ${item.c}</span> <span class="val">${item.t}</span>`;
-  } else {
-    div.innerHTML = `<span class="key">${item.k}:</span> <span class="val">${item.v}</span>`;
-  }
-  term.appendChild(div);
+  if(i >= fields.length){ return; }
+  const item = fields[i];
+  const row = document.createElement('div');
+  row.className = 'ledger-row';
+  row.innerHTML = item.stamp
+    ? `<span class="field">${item.k}</span> <span class="stamp active">${item.stamp}</span>`
+    : `<span class="field">${item.k}</span> <span class="value">${item.v}</span>`;
+  term.appendChild(row);
   if(reduced){ render(i+1); return; }
   setTimeout(() => render(i+1), 260);
 }

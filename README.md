@@ -9,14 +9,14 @@ CV virtual y portafolio profesional de una sola página (single-page), construid
 - HTML5 semántico
 - CSS puro (variables CSS, grid, flexbox, sin preprocesadores)
 - JavaScript vanilla (sin dependencias ni build step)
-- Tipografías: [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk), [Inter](https://fonts.google.com/specimen/Inter) y [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) vía Google Fonts
+- Tipografías: [Archivo](https://fonts.google.com/specimen/Archivo), [Inter](https://fonts.google.com/specimen/Inter) y [Fragment Mono](https://fonts.google.com/specimen/Fragment+Mono) vía Google Fonts
 
 ## Estructura
 
 ```
 index.html    → estructura y contenido
 styles.css    → sistema de diseño (paleta, tipografía, layout)
-script.js     → secuencia de terminal en el hero + scroll reveal + menú mobile
+script.js     → secuencia de expediente/ledger en el hero + scroll reveal + menú mobile
 ```
 
 ## Cómo correrlo localmente

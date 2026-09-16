@@ -7,14 +7,14 @@
 <meta name="description" content="Portafolio y CV virtual de Edgar Alejandro Cedeño Suárez, estudiante de Ingeniería en Sistemas Computacionales.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Fragment+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <div class="logo">&gt;_ <span>alejandro.cedeno</span></div>
+    <div class="logo">Alejandro <span>Cedeño</span></div>
     <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navlinks">
       <span></span><span></span><span></span>
     </button>
@@ -32,7 +32,6 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow">status: disponible para nuevas oportunidades</div>
       <h1>Edgar Alejandro<br>Cedeño Suárez&nbsp;—<br><em>Full-Stack Developer</em></h1>
       <p class="lead">Estudiante de Ingeniería en Sistemas Computacionales en Aguascalientes, construyendo aplicaciones web, móviles y soluciones internas con enfoque en procesos claros.</p>
       <div class="hero-cta">
@@ -41,22 +40,23 @@
         <a class="btn ghost" href="https://github.com/AlexCedeno-dev" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
     </div>
-    <div class="terminal">
-      <div class="terminal-bar">
-        <span></span><span></span><span></span>
-        <div class="fn">perfil.sh</div>
+    <div class="ledger">
+      <div class="ledger-header">
+        <span>Expediente · turno actual</span>
+        <span>2026</span>
       </div>
-      <div class="terminal-body" id="termBody"></div>
+      <div class="ledger-body" id="termBody"></div>
     </div>
   </div>
 </header>
 
 <section id="about">
   <div class="wrap">
-    <div class="eyebrow">// sobre mí</div>
     <h2 class="title">Quién soy</h2>
     <div class="about-grid" data-reveal>
-      <img class="avatar" id="avatarSlot" src="media/avatar.jpg" alt="Retrato de Edgar Alejandro Cedeño Suárez" loading="lazy">
+      <div class="avatar-frame">
+        <img class="avatar" id="avatarSlot" src="media/avatar.jpg" alt="Retrato de Edgar Alejandro Cedeño Suárez" loading="lazy">
+      </div>
       <div class="about-text">
         <p>Soy estudiante de <strong>Ingeniería en Sistemas Computacionales</strong> en la Universidad Autónoma de Aguascalientes, con experiencia práctica en desarrollo web, móvil y soluciones internas para mejora de procesos. He trabajado en frontend, backend, bases de datos, APIs REST, automatización y soporte a sistemas empresariales.</p>
         <p>Me interesa seguir creciendo en el área de software aplicando <strong>buenas prácticas de programación, pensamiento analítico y resolución de problemas</strong>, para construir soluciones funcionales y ordenadas, centradas en las necesidades reales del usuario y de la operación.</p>
@@ -65,10 +65,9 @@
     </div>
   </div>
 </section>
-
+  
 <section id="experience">
   <div class="wrap">
-    <div class="eyebrow">// experiencia laboral</div>
     <h2 class="title">Trayectoria profesional</h2>
 
     <div class="job" data-reveal>
@@ -108,7 +107,6 @@
 
 <section id="education">
   <div class="wrap">
-    <div class="eyebrow">// educación &amp; certificaciones</div>
     <h2 class="title">Formación</h2>
     <div class="cards" data-reveal>
       <div class="card">
@@ -117,7 +115,7 @@
             <h3>Ingeniería en Sistemas Computacionales</h3>
             <div class="org">Universidad Autónoma de Aguascalientes</div>
           </div>
-          <span class="badge prog">en curso</span>
+          <span class="stamp active">en curso</span>
         </div>
         <p>Aguascalientes, México · Egreso estimado: diciembre 2026</p>
       </div>
@@ -127,7 +125,7 @@
             <h3>AWS Academy Graduate</h3>
             <div class="org">Cloud Foundations — Amazon Web Services</div>
           </div>
-          <span class="badge on">obtenida</span>
+          <span class="stamp verified">obtenida</span>
         </div>
         <p>Mayo 2026</p>
         <a class="link" href="https://www.credly.com/go/Zj2c779G" target="_blank" rel="noopener">Ver credencial ↗</a>
@@ -138,7 +136,6 @@
 
 <section id="skills">
   <div class="wrap">
-    <div class="eyebrow">// stack técnico</div>
     <h2 class="title">Habilidades</h2>
     <div class="skill-groups" data-reveal>
       <div class="skill-group">
@@ -189,41 +186,40 @@
 
 <section id="hobbies">
   <div class="wrap">
-    <div class="eyebrow">// fuera del código</div>
     <h2 class="title">Hobbies, y lo que aportan a mi trabajo</h2>
     <div class="hobby-grid" data-reveal>
       <div class="hobby-card">
-        <span class="icon">🎭</span>
+        <span class="code">TM</span>
         <h4>Teatro musical y baile</h4>
         <p>Actor y bailarín activo en una obra de teatro musical: ensayos coordinados, marcaciones exactas, y depender de que cada persona cumpla su parte.</p>
         <div class="hobby-skill">→ trabajo en equipo · disciplina · coordinación bajo presión</div>
       </div>
       <div class="hobby-card">
-        <span class="icon">🎮</span>
+        <span class="code">VJ</span>
         <h4>Videojuegos</h4>
         <p>Juego con enfoque en estrategia y destreza, buscando activamente mejorar la toma de decisiones rápidas.</p>
         <div class="hobby-skill">→ pensamiento analítico · resolución de problemas</div>
       </div>
       <div class="hobby-card">
-        <span class="icon">🏀</span>
+        <span class="code">DEP</span>
         <h4>Basquetbol, natación y voleibol</h4>
         <p>Deportes que practico de forma regular, individuales y de equipo, con horarios que compagino junto al trabajo y la escuela.</p>
         <div class="hobby-skill">→ trabajo en equipo · organización del tiempo</div>
       </div>
       <div class="hobby-card">
-        <span class="icon">🎧</span>
+        <span class="code">MU</span>
         <h4>Música</h4>
         <p>Escuchar música es parte de cómo mantengo el enfoque durante sesiones largas de trabajo o estudio.</p>
         <div class="hobby-skill">→ concentración</div>
       </div>
       <div class="hobby-card">
-        <span class="icon">⚡</span>
+        <span class="code">TEC</span>
         <h4>Tecnología nueva</h4>
         <p>Me gusta explorar herramientas, frameworks y servicios recién lanzados antes de que sean necesarios en un proyecto.</p>
         <div class="hobby-skill">→ aprendizaje continuo · adaptabilidad</div>
       </div>
       <div class="hobby-card">
-        <span class="icon">🧩</span>
+        <span class="code">SUM</span>
         <h4>En conjunto</h4>
         <p>Estos hábitos comparten un patrón: entornos donde varias personas dependen entre sí, con tiempos definidos y un resultado que se nota si algo falla.</p>
         <div class="hobby-skill">→ adaptación a distintos ambientes</div>
@@ -244,7 +240,7 @@
         <a class="btn ghost" href="tel:+524491684651">+52 449 168 4651</a>
       </div>
     </div>
-    <div class="foot-meta">Aguascalientes, México · perfil.sh actualizado en 2026</div>
+    <div class="foot-meta">Aguascalientes, México · expediente actualizado en 2026</div>
   </div>
 </footer>
 
