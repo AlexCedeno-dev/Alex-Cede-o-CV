@@ -1,11 +1,12 @@
 import Reveal from './Reveal'
+import SectionHeading from './SectionHeading'
 import { aboutParagraphs } from '../data/content'
 
 export default function About() {
   return (
     <section id="about">
       <div className="wrap">
-        <h2 className="title">Quién soy</h2>
+        <SectionHeading numero="§ I">Quién soy</SectionHeading>
         <Reveal className="about-grid">
           <div className="avatar-frame">
             <img

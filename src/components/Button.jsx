@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 import { colors, easeOutStrong } from '../motion'
 
-// Salida rápida (140ms), entrada un poco más deliberada (220ms): la misma
-// asimetría enter/exit que .card y .tag, aplicada a los botones del hero y contacto.
+// Salida rápida (140ms), entrada un poco más deliberada (220ms), aplicada
+// a los botones del hero y contacto.
 const primaryVariants = {
   rest: {
     x: 0,
