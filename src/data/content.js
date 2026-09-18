@@ -1,3 +1,6 @@
+export const fullName = 'Edgar Alejandro Cedeño Suárez'
+export const refCode = 'ECS-2026'
+
 export const navLinks = [
   { href: '#about', label: 'sobre-mi' },
   { href: '#experience', label: 'experiencia' },
@@ -23,45 +26,40 @@ export const aboutParagraphs = [
 
 export const jobs = [
   {
+    id: 'EXP-001',
     date: 'Marzo 2026 — Actualidad',
     role: 'Becario de Desarrollo de Sistemas',
     org: 'Foresight · Aguascalientes, México',
-    bullets: [
-      'Creación de interfaces web con React y desarrollo de aplicaciones móviles con React Native.',
-      'Diseño y consumo de APIs REST para la comunicación entre cliente, servidor y bases de datos.',
-      'Implementación de agentes en Node.js para monitoreo y registro de información de equipos.',
-      'Administración y consulta de datos en MySQL para gestión de usuarios, equipos y procesos internos.',
-      'Participación en mejoras de sistemas internos de inventario, trazabilidad y control operativo.',
-      'Apoyo en automatización, pruebas y despliegue de soluciones en entornos empresariales.',
-      'Soporte en Active Directory y administración de accesos internos.',
-    ],
+    descripcion:
+      'Creación de interfaces web con React y aplicaciones móviles con React Native, además de agentes en Node.js para monitoreo y registro de información de equipos. Diseño y consumo de APIs REST para la comunicación entre cliente, servidor y bases de datos, con administración de datos en MySQL para gestión de usuarios, equipos y procesos internos. Participación en mejoras de inventario, trazabilidad y control operativo, apoyo en automatización, pruebas y despliegue, y soporte en Active Directory.',
+    tecnologias: ['React', 'React Native', 'Node.js', 'APIs REST', 'MySQL', 'Active Directory'],
   },
   {
+    id: 'EXP-002',
     date: 'Nov 2024 — Ago 2025',
     role: 'Becario de Sistemas Computacionales',
     org: 'Key Depot · Aguascalientes, México',
-    bullets: [
-      'Desarrollo y mantenimiento de páginas web con Angular v19 y WordPress, aplicando buenas prácticas.',
-      'Implementación de funcionalidades backend en PHP, conectando aplicaciones con MySQL vía phpMyAdmin.',
-      'Integración de bots automatizados con N8N y Webhooks para optimizar procesos internos.',
-      'Verificación de pagos electrónicos utilizando Openpay BBVA.',
-      'Soporte técnico y mejora continua de sistemas existentes.',
-    ],
+    descripcion:
+      'Desarrollo y mantenimiento de páginas web con Angular v19 y WordPress, aplicando buenas prácticas, e implementación de funcionalidades backend en PHP conectando aplicaciones con MySQL vía phpMyAdmin. Integración de bots automatizados con N8N y Webhooks para optimizar procesos internos, verificación de pagos electrónicos con Openpay BBVA, y soporte técnico y mejora continua de sistemas existentes.',
+    tecnologias: ['Angular v19', 'WordPress', 'PHP', 'MySQL', 'N8N', 'Webhooks', 'Openpay BBVA'],
   },
 ]
 
 export const educationCards = [
   {
+    id: 'FORM-001',
     title: 'Ingeniería en Sistemas Computacionales',
     org: 'Universidad Autónoma de Aguascalientes',
+    period: 'Egreso estimado: dic. 2026',
     status: { type: 'active', label: 'en curso' },
-    meta: 'Aguascalientes, México · Egreso estimado: diciembre 2026',
+    detalle: 'Aguascalientes, México.',
   },
   {
+    id: 'FORM-002',
     title: 'AWS Academy Graduate',
     org: 'Cloud Foundations — Amazon Web Services',
+    period: 'Mayo 2026',
     status: { type: 'verified', label: 'obtenida' },
-    meta: 'Mayo 2026',
     link: { href: 'https://www.credly.com/go/Zj2c779G', label: 'Ver credencial ↗' },
   },
 ]
@@ -132,9 +130,9 @@ export const hobbies = [
   },
 ]
 
-export const contactLinks = [
-  { href: 'mailto:cedenoalejandro0612@gmail.com', label: 'Enviar correo', variant: 'primary' },
-  { href: 'https://www.linkedin.com/in/alejandro-cede%C3%B1o-b55660331/', label: 'LinkedIn ↗', variant: 'ghost', external: true },
-  { href: 'https://github.com/AlexCedeno-dev', label: 'GitHub ↗', variant: 'ghost', external: true },
-  { href: 'tel:+524491684651', label: '+52 449 168 4651', variant: 'ghost' },
+export const contactFields = [
+  { label: 'Correo', value: 'cedenoalejandro0612@gmail.com', href: 'mailto:cedenoalejandro0612@gmail.com' },
+  { label: 'GitHub', value: 'github.com/AlexCedeno-dev', href: 'https://github.com/AlexCedeno-dev', external: true },
+  { label: 'LinkedIn', value: 'linkedin.com/in/alejandro-cedeño', href: 'https://www.linkedin.com/in/alejandro-cede%C3%B1o-b55660331/', external: true },
+  { label: 'Teléfono', value: '+52 449 168 4651', href: 'tel:+524491684651' },
 ]

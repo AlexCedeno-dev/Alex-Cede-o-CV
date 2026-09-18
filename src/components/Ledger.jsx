@@ -36,7 +36,7 @@ export default function Ledger() {
   return (
     <div className="ledger">
       <div className="ledger-header">
-        <span>Expediente · turno actual</span>
+        <span>Ficha técnica</span>
         <span>2026</span>
       </div>
       <motion.div className="ledger-body" initial="hidden" animate="show" variants={containerVariants}>
