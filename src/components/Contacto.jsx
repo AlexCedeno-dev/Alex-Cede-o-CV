@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import Reveal from './Reveal'
-import { contactFields, fullName, refCode } from '../data/content'
+import { useLanguage } from '../i18n/LanguageContext'
+import { useContent } from '../data/useContent'
+import { fullName, refCode } from '../data/shared'
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/meaoqbjv'
 
 function ContactForm() {
+  const { t } = useLanguage()
   const [status, setStatus] = useState('idle') // idle | sending | success | error
   const [values, setValues] = useState({ asunto: '', mensaje: '' })
 
@@ -36,7 +39,7 @@ function ContactForm() {
   if (status === 'success') {
     return (
       <div className="form-status success" role="status">
-        Mensaje registrado. Respondo en menos de 48 horas hábiles.
+        {t.contact.success}
       </div>
     )
   }
@@ -44,7 +47,7 @@ function ContactForm() {
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
       <div className="form-field">
-        <label htmlFor="asunto">Asunto</label>
+        <label htmlFor="asunto">{t.contact.subject}</label>
         <input
           id="asunto"
           name="asunto"
@@ -55,7 +58,7 @@ function ContactForm() {
         />
       </div>
       <div className="form-field">
-        <label htmlFor="mensaje">Mensaje</label>
+        <label htmlFor="mensaje">{t.contact.message}</label>
         <textarea
           id="mensaje"
           name="mensaje"
@@ -70,11 +73,11 @@ function ContactForm() {
         <input id="_gotcha" name="_gotcha" type="text" tabIndex={-1} autoComplete="off" />
       </div>
       <button className="form-submit" type="submit" disabled={status === 'sending'}>
-        {status === 'sending' ? 'Enviando…' : 'Enviar mensaje'}
+        {status === 'sending' ? t.contact.sending : t.contact.send}
       </button>
       {status === 'error' && (
         <p className="form-status error" role="alert">
-          No se pudo enviar. Probá de nuevo o escribime directo a{' '}
+          {t.contact.errorPrefix}{' '}
           <a href="mailto:cedenoalejandro0612@gmail.com">cedenoalejandro0612@gmail.com</a>.
         </p>
       )}
@@ -83,14 +86,17 @@ function ContactForm() {
 }
 
 export default function Contacto() {
+  const { t } = useLanguage()
+  const { contactFields } = useContent()
+
   return (
     <footer id="contact">
       <div className="wrap">
         <Reveal className="contact-box">
           <div className="contact-grid">
             <div className="contact-intro">
-              <h2>¿Trabajamos juntos?</h2>
-              <p>Disponible para prácticas, proyectos freelance y oportunidades de tiempo completo. La forma más directa de contactarme es por correo.</p>
+              <h2>{t.contact.heading}</h2>
+              <p>{t.contact.intro}</p>
               <div className="contact-fields">
                 {contactFields.map((f) => (
                   <div className="contact-field" key={f.label}>
@@ -106,14 +112,14 @@ export default function Contacto() {
                   </div>
                 ))}
               </div>
-              <span className="stamp active">Disponible</span>
+              <span className="stamp active">{t.contact.available}</span>
             </div>
             <ContactForm />
           </div>
         </Reveal>
         <div className="foot-meta">
           <span>© 2026 · {fullName} · Ref. {refCode}</span>
-          <span>Portafolio profesional — Todos los derechos reservados</span>
+          <span>{t.contact.rightsLine}</span>
         </div>
       </div>
     </footer>

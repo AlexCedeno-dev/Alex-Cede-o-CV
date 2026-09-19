@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
-import { navLinks } from '../data/content'
+import { useLanguage } from '../i18n/LanguageContext'
+import { useContent } from '../data/useContent'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const toggleRef = useRef(null)
+  const { t } = useLanguage()
+  const { navLinks } = useContent()
 
   useEffect(() => {
     if (!open) return
@@ -25,7 +28,7 @@ export default function Nav() {
           ref={toggleRef}
           className="nav-toggle"
           type="button"
-          aria-label="Abrir menú de navegación"
+          aria-label={t.nav.toggle}
           aria-expanded={open}
           aria-controls="navlinks"
           onClick={() => setOpen((v) => !v)}

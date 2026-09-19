@@ -1,12 +1,16 @@
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
-import { skillGroups } from '../data/content'
+import { useLanguage } from '../i18n/LanguageContext'
+import { useContent } from '../data/useContent'
 
 export default function Skills() {
+  const { t } = useLanguage()
+  const { skillGroups } = useContent()
+
   return (
     <section id="skills">
       <div className="wrap">
-        <SectionHeading numero="§ IV">Habilidades</SectionHeading>
+        <SectionHeading numero="§ IV">{t.skills.heading}</SectionHeading>
         <Reveal className="skill-groups">
           {skillGroups.map((group) => (
             <div className="skill-group" key={group.title}>

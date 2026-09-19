@@ -3,23 +3,26 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
 import { easeOutStrong } from '../motion'
-import { jobs } from '../data/content'
+import { useLanguage } from '../i18n/LanguageContext'
+import { useContent } from '../data/useContent'
 
 export default function Experiencia() {
   const [openIndex, setOpenIndex] = useState(0)
   const shouldReduceMotion = useReducedMotion()
   const duration = shouldReduceMotion ? 0 : 0.22
+  const { t } = useLanguage()
+  const { jobs } = useContent()
 
   return (
     <section id="experience">
       <div className="wrap">
-        <SectionHeading numero="§ II">Trayectoria profesional</SectionHeading>
+        <SectionHeading numero="§ II">{t.experience.heading}</SectionHeading>
         {jobs.map((job, i) => {
           const isOpen = openIndex === i
           const triggerId = `job-trigger-${i}`
           const panelId = `job-panel-${i}`
           return (
-            <Reveal key={job.org} className="job">
+            <Reveal key={job.id} className="job">
               <div className="job-date">{job.date}</div>
               <div>
                 <h3 className="job-heading">
@@ -60,11 +63,11 @@ export default function Experiencia() {
                     >
                       <p className="job-descripcion">{job.descripcion}</p>
                       <div className="tags">
-                        {job.tecnologias.map((t) => (
-                          <span key={t} className="tag">{t}</span>
+                        {job.tecnologias.map((tech) => (
+                          <span key={tech} className="tag">{tech}</span>
                         ))}
                       </div>
-                      <p className="folio job-ref">Ref. {job.id}</p>
+                      <p className="folio job-ref">{t.experience.ref} {job.id}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>

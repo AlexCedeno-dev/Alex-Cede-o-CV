@@ -1,12 +1,16 @@
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
-import { hobbies } from '../data/content'
+import { useLanguage } from '../i18n/LanguageContext'
+import { useContent } from '../data/useContent'
 
 export default function Hobbies() {
+  const { t } = useLanguage()
+  const { hobbies } = useContent()
+
   return (
     <section id="hobbies">
       <div className="wrap">
-        <SectionHeading numero="§ V">Hobbies, y lo que aportan a mi trabajo</SectionHeading>
+        <SectionHeading numero="§ V">{t.hobbies.heading}</SectionHeading>
         <Reveal className="hobby-grid">
           {hobbies.map((hobby, i) => (
             <div className="hobby-card" key={hobby.code}>

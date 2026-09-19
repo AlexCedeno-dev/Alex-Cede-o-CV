@@ -6,6 +6,7 @@ import Formacion from './components/Formacion'
 import Skills from './components/Skills'
 import Hobbies from './components/Hobbies'
 import Contacto from './components/Contacto'
+import AccessibilityPanel from './components/AccessibilityPanel'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       <Skills />
       <Hobbies />
       <Contacto />
+      <AccessibilityPanel />
     </>
   )
 }

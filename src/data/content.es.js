@@ -1,6 +1,3 @@
-export const fullName = 'Edgar Alejandro Cedeño Suárez'
-export const refCode = 'ECS-2026'
-
 export const navLinks = [
   { href: '#about', label: 'sobre-mi' },
   { href: '#experience', label: 'experiencia' },

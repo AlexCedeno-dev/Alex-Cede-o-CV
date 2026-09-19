@@ -1,24 +1,27 @@
 import Button from './Button'
 import Ledger from './Ledger'
-import { refCode } from '../data/content'
+import { useLanguage } from '../i18n/LanguageContext'
+import { refCode } from '../data/shared'
 
 export default function Hero() {
+  const { t } = useLanguage()
+
   return (
     <header className="hero">
       <div className="wrap">
         <div className="hero-masthead">
-          <span>Currículum vitae · registro profesional</span>
-          <span>Ref. {refCode} · Rev. 2026-09-17</span>
+          <span>{t.hero.masthead}</span>
+          <span>{t.hero.refPrefix} {refCode} · {t.hero.revPrefix} 2026-09-17</span>
         </div>
         <div className="rule" />
         <div className="hero-grid">
           <div>
             <h1>Edgar Alejandro<br />Cedeño Suárez&nbsp;—<br /><em>Full-Stack Developer</em></h1>
-            <p className="lead">Estudiante de Ingeniería en Sistemas Computacionales en Aguascalientes, construyendo aplicaciones web, móviles y soluciones internas con enfoque en procesos claros.</p>
+            <p className="lead">{t.hero.lead}</p>
             <div className="hero-cta">
-              <Button variant="primary" href="#contact">Contactarme</Button>
-              <Button variant="ghost" href="#experience">Ver experiencia</Button>
-              <Button variant="ghost" href="https://github.com/AlexCedeno-dev" external>GitHub ↗</Button>
+              <Button variant="primary" href="#contact">{t.hero.ctaContact}</Button>
+              <Button variant="ghost" href="#experience">{t.hero.ctaExperience}</Button>
+              <Button variant="ghost" href="https://github.com/AlexCedeno-dev" external>{t.hero.ctaGithub}</Button>
             </div>
           </div>
           <Ledger />

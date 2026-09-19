@@ -1,18 +1,22 @@
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
-import { aboutParagraphs } from '../data/content'
+import { useLanguage } from '../i18n/LanguageContext'
+import { useContent } from '../data/useContent'
 
 export default function About() {
+  const { t } = useLanguage()
+  const { aboutParagraphs } = useContent()
+
   return (
     <section id="about">
       <div className="wrap">
-        <SectionHeading numero="§ I">Quién soy</SectionHeading>
+        <SectionHeading numero="§ I">{t.about.heading}</SectionHeading>
         <Reveal className="about-grid">
           <div className="avatar-frame">
             <img
               className="avatar"
               src={`${import.meta.env.BASE_URL}media/avatar.jpg`}
-              alt="Retrato de Edgar Alejandro Cedeño Suárez"
+              alt={t.about.avatarAlt}
               loading="lazy"
             />
           </div>
