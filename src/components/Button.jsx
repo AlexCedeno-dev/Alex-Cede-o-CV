@@ -31,7 +31,7 @@ const ghostVariants = {
   },
 }
 
-export default function Button({ variant = 'ghost', href, children, external = false }) {
+export default function Button({ variant = 'ghost', href, children, external = false, download }) {
   const variants = variant === 'primary' ? primaryVariants : ghostVariants
 
   return (
@@ -40,6 +40,7 @@ export default function Button({ variant = 'ghost', href, children, external = f
       href={href}
       target={external ? '_blank' : undefined}
       rel={external ? 'noopener' : undefined}
+      download={download}
       variants={variants}
       initial="rest"
       animate="rest"
