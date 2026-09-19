@@ -1,12 +1,16 @@
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
-import { educationCards } from '../data/content'
+import { useLanguage } from '../i18n/LanguageContext'
+import { useContent } from '../data/useContent'
 
 export default function Formacion() {
+  const { t } = useLanguage()
+  const { educationCards } = useContent()
+
   return (
     <section id="education">
       <div className="wrap">
-        <SectionHeading numero="§ III">Formación</SectionHeading>
+        <SectionHeading numero="§ III">{t.education.heading}</SectionHeading>
         <Reveal className="formacion-list">
           {educationCards.map((item) => (
             <div className="formacion-item" key={item.id}>
@@ -26,7 +30,7 @@ export default function Formacion() {
                   {item.link.label}
                 </a>
               )}
-              <p className="folio formacion-ref">Ref. {item.id}</p>
+              <p className="folio formacion-ref">{t.education.ref} {item.id}</p>
             </div>
           ))}
         </Reveal>

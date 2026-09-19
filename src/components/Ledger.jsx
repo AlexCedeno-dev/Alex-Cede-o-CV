@@ -1,11 +1,14 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { ledgerFields } from '../data/content'
+import { useLanguage } from '../i18n/LanguageContext'
+import { useContent } from '../data/useContent'
 import { stampEase } from '../motion'
 
 // Puerta de expediente: las filas entran una a una (antes setTimeout recursivo
 // en script.js), ahora como stagger declarativo que Framer Motion puede interrumpir.
 export default function Ledger() {
   const shouldReduceMotion = useReducedMotion()
+  const { t } = useLanguage()
+  const { ledgerFields } = useContent()
 
   const containerVariants = {
     hidden: {},
@@ -36,7 +39,7 @@ export default function Ledger() {
   return (
     <div className="ledger">
       <div className="ledger-header">
-        <span>Ficha técnica</span>
+        <span>{t.ledger.title}</span>
         <span>2026</span>
       </div>
       <motion.div className="ledger-body" initial="hidden" animate="show" variants={containerVariants}>
