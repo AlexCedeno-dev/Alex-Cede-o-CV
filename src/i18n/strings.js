@@ -9,6 +9,7 @@ export const strings = {
       ctaContact: 'Get in touch',
       ctaExperience: 'View experience',
       ctaGithub: 'GitHub ↗',
+      ctaCv: 'Download CV ↓',
     },
     ledger: { title: 'Quick profile' },
     about: {
@@ -64,6 +65,7 @@ export const strings = {
       ctaContact: 'Contactarme',
       ctaExperience: 'Ver experiencia',
       ctaGithub: 'GitHub ↗',
+      ctaCv: 'Descargar CV ↓',
     },
     ledger: { title: 'Ficha técnica' },
     about: {
