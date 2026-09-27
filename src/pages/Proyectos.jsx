@@ -3,6 +3,10 @@ import Reveal from '../components/Reveal'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useContent } from '../data/useContent'
 
+// Temporal: mientras se preparan las capturas, la página muestra solo un aviso.
+// Poner en false para volver a mostrar la ficha completa de los proyectos.
+const WORK_IN_PROGRESS = true
+
 export default function Proyectos() {
   const { t } = useLanguage()
   const { projects } = useContent()
@@ -12,6 +16,9 @@ export default function Proyectos() {
       <PageHeader eyebrow={t.pages.projectsEyebrow} title={t.pages.projectsTitle} />
       <section id="projects-detail">
         <div className="wrap">
+          {WORK_IN_PROGRESS ? (
+            <p className="folio project-gallery-empty">{t.projectsPage.workInProgress}</p>
+          ) : (
           <Reveal className="project-list">
             {projects.map((p) => (
               <div className="project-card" key={p.id}>
@@ -65,6 +72,7 @@ export default function Proyectos() {
               </div>
             ))}
           </Reveal>
+          )}
         </div>
       </section>
     </>

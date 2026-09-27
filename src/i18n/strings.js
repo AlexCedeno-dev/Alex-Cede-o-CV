@@ -56,6 +56,7 @@ export const strings = {
       demo: 'Demo',
       repo: 'Repository ↗',
       imagesSoon: 'Screenshots coming soon.',
+      workInProgress: 'Working on it.',
     },
     skillsPage: {
       usedIn: 'Used in',
@@ -144,6 +145,7 @@ export const strings = {
       demo: 'Demo',
       repo: 'Repositorio ↗',
       imagesSoon: 'Capturas próximamente.',
+      workInProgress: 'Trabajando en ello.',
     },
     skillsPage: {
       usedIn: 'Usado en',
