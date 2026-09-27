@@ -16,13 +16,13 @@ export const ledgerFields = [
 export const aboutParagraphs = [
   'I\'m a <strong>Computer Systems Engineering</strong> student at the Universidad Autónoma de Aguascalientes, with hands-on experience in web, mobile, and internal process-improvement software. I\'ve worked across frontend, backend, databases, REST APIs, automation, and support for business systems.',
   'I\'m interested in keep growing in software by applying <strong>solid coding practices, analytical thinking, and problem-solving</strong>, to build functional, well-organized solutions centered on the real needs of the user and the operation.',
-  'Outside of code I have other activities that, without meaning to, end up shaping directly how I work — more on that in the hobbies section.',
+  'Outside of code I have other activities that, without meaning to, end up shaping directly how I work. More on that in the hobbies section.',
 ]
 
 export const jobs = [
   {
     id: 'EXP-001',
-    date: 'March 2026 — Present',
+    date: 'March 2026 to Present',
     role: 'Systems Development Intern',
     org: 'Foresight · Aguascalientes, Mexico',
     descripcion:
@@ -31,7 +31,7 @@ export const jobs = [
   },
   {
     id: 'EXP-002',
-    date: 'Nov 2024 — Aug 2025',
+    date: 'Nov 2024 to Aug 2025',
     role: 'Computer Systems Intern',
     org: 'Key Depot · Aguascalientes, Mexico',
     descripcion:
@@ -52,7 +52,7 @@ export const educationCards = [
   {
     id: 'FORM-002',
     title: 'AWS Academy Graduate',
-    org: 'Cloud Foundations — Amazon Web Services',
+    org: 'Cloud Foundations, Amazon Web Services',
     period: 'May 2026',
     status: { type: 'verified', label: 'earned' },
     link: { href: 'https://www.credly.com/go/Zj2c779G', label: 'View credential ↗' },
@@ -82,13 +82,13 @@ export const skillGroups = [
   },
   {
     title: 'Spoken languages',
-    tags: ['Spanish — native', 'English — B1'],
+    tags: ['Spanish (native)', 'English (B1)'],
   },
 ]
 
 // Level 1-3 and "usedIn" are a draft derived from how many real jobs or
 // projects reference each technology (see jobs[].tecnologias and
-// projects[].stack) — not a self-assessment. Edgar should review and
+// projects[].stack), not a self-assessment. Edgar should review and
 // adjust these before treating them as final.
 export const skillsDetailed = [
   {

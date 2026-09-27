@@ -14,7 +14,7 @@ export const strings = {
     home: {
       indexEyebrow: 'Contents',
       cvTitle: 'Full CV',
-      cvText: 'Experience, education, skills summary, hobbies and contact — the complete document, one page.',
+      cvText: 'Experience, education, skills summary, hobbies and contact: the complete document, one page.',
       projectsTitle: 'Projects',
       projectsText: 'A closer look at what I\'ve built: GreonTrack, broken down piece by piece, with links to each repo.',
       skillsTitle: 'Skills',
@@ -40,7 +40,7 @@ export const strings = {
       sending: 'Sending…',
       success: 'Message received. I respond within 48 business hours.',
       errorPrefix: "Couldn't send it. Try again or email me directly at",
-      rightsLine: 'Professional portfolio — All rights reserved',
+      rightsLine: 'Professional portfolio. All rights reserved',
     },
     pages: {
       back: 'Back to home',
@@ -84,7 +84,7 @@ export const strings = {
       themeSystem: 'System',
     },
     meta: {
-      title: 'Edgar Alejandro Cedeño Suárez — Full-Stack Developer',
+      title: 'Edgar Alejandro Cedeño Suárez | Full-Stack Developer',
       description: 'Portfolio and virtual CV of Edgar Alejandro Cedeño Suárez, Computer Systems Engineering student.',
     },
   },
@@ -103,7 +103,7 @@ export const strings = {
     home: {
       indexEyebrow: 'Índice',
       cvTitle: 'CV completo',
-      cvText: 'Experiencia, formación, resumen de skills, hobbies y contacto — el documento completo, en una página.',
+      cvText: 'Experiencia, formación, resumen de skills, hobbies y contacto: el documento completo, en una página.',
       projectsTitle: 'Proyectos',
       projectsText: 'Un vistazo más de cerca a lo que he construido: GreonTrack, desglosado pieza por pieza, con links a cada repo.',
       skillsTitle: 'Skills',
@@ -129,7 +129,7 @@ export const strings = {
       sending: 'Enviando…',
       success: 'Mensaje registrado. Respondo en menos de 48 horas hábiles.',
       errorPrefix: 'No se pudo enviar. Probá de nuevo o escribime directo a',
-      rightsLine: 'Portafolio profesional — Todos los derechos reservados',
+      rightsLine: 'Portafolio profesional. Todos los derechos reservados',
     },
     pages: {
       back: 'Volver al inicio',
@@ -173,7 +173,7 @@ export const strings = {
       themeSystem: 'Sistema',
     },
     meta: {
-      title: 'Edgar Alejandro Cedeño Suárez — Full-Stack Developer',
+      title: 'Edgar Alejandro Cedeño Suárez | Full-Stack Developer',
       description: 'Portafolio y CV virtual de Edgar Alejandro Cedeño Suárez, estudiante de Ingeniería en Sistemas Computacionales.',
     },
   },

@@ -22,7 +22,7 @@ export const aboutParagraphs = [
 export const jobs = [
   {
     id: 'EXP-001',
-    date: 'Marzo 2026 — Actualidad',
+    date: 'Marzo 2026 a Actualidad',
     role: 'Becario de Desarrollo de Sistemas',
     org: 'Foresight · Aguascalientes, México',
     descripcion:
@@ -31,7 +31,7 @@ export const jobs = [
   },
   {
     id: 'EXP-002',
-    date: 'Nov 2024 — Ago 2025',
+    date: 'Nov 2024 a Ago 2025',
     role: 'Becario de Sistemas Computacionales',
     org: 'Key Depot · Aguascalientes, México',
     descripcion:
@@ -52,7 +52,7 @@ export const educationCards = [
   {
     id: 'FORM-002',
     title: 'AWS Academy Graduate',
-    org: 'Cloud Foundations — Amazon Web Services',
+    org: 'Cloud Foundations, Amazon Web Services',
     period: 'Mayo 2026',
     status: { type: 'verified', label: 'obtenida' },
     link: { href: 'https://www.credly.com/go/Zj2c779G', label: 'Ver credencial ↗' },
@@ -82,13 +82,13 @@ export const skillGroups = [
   },
   {
     title: 'Idiomas',
-    tags: ['Español — nativo', 'Inglés — B1'],
+    tags: ['Español (nativo)', 'Inglés (B1)'],
   },
 ]
 
 // Nivel 1-3 y "usedIn" son un borrador derivado de en cuántos empleos o
 // proyectos reales aparece cada tecnología (ver jobs[].tecnologias y
-// projects[].stack) — no un autodiagnóstico. Edgar debería revisarlos y
+// projects[].stack), no un autodiagnóstico. Edgar debería revisarlos y
 // ajustarlos antes de publicarlos como definitivos.
 export const skillsDetailed = [
   {

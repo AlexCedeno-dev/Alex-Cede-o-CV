@@ -1,4 +1,4 @@
-# Edgar Alejandro Cedeño Suárez — CV / Portafolio
+# Edgar Alejandro Cedeño Suárez | CV / Portafolio
 
 CV virtual y portafolio profesional multipágina, construido con **React + Vite** y navegación con **React Router** (`HashRouter`). Disponible en inglés (por defecto) y español, con un panel de accesibilidad. Pensado para desplegarse en GitHub Pages vía GitHub Actions.
 
@@ -21,7 +21,7 @@ Cualquier otra ruta redirige a `/`.
 
 - [React 19](https://react.dev/) + [Vite 6](https://vitejs.dev/) (componentes JSX, sin TypeScript)
 - [React Router 7](https://reactrouter.com/) (`react-router-dom`) con `HashRouter`
-- [Framer Motion](https://motion.dev/) para las animaciones (scroll reveal, acordeón de experiencia, hover states) — respeta `prefers-reduced-motion`
+- [Framer Motion](https://motion.dev/) para las animaciones (scroll reveal, acordeón de experiencia, hover states), respeta `prefers-reduced-motion`
 - CSS puro (variables CSS, grid, flexbox, sin preprocesadores ni Tailwind)
 - Contenido bilingüe (ES/EN) y panel de accesibilidad, ambos con contexto de React
 - Formulario de contacto conectado a [Formspree](https://formspree.io/)

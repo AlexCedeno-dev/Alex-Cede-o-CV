@@ -18,7 +18,7 @@ export default function Hero() {
         <div className="rule" />
         <div className="hero-grid">
           <div>
-            <h1>Edgar Alejandro<br />Cedeño Suárez&nbsp;—<br /><em>Full-Stack Developer</em></h1>
+            <h1>Edgar Alejandro<br />Cedeño Suárez<br /><em>Full-Stack Developer</em></h1>
             <p className="lead">{t.hero.lead}</p>
             <div className="hero-cta">
               <Button variant="primary" to="/cv" state={{ scrollTo: 'contact' }}>{t.hero.ctaContact}</Button>

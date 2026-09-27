@@ -9,7 +9,7 @@ export default function SkillsDetail() {
   const { t } = useLanguage()
   const { skillsDetailed, skillGroups } = useContent()
   // Idiomas / Spoken languages siempre es el último grupo en skillGroups
-  // (ver content.es.js/content.en.js) — no tiene nivel de dominio propio
+  // (ver content.es.js/content.en.js), no tiene nivel de dominio propio
   // porque la etiqueta ya lo dice (nativo/B1), así que se muestra aparte.
   const spokenLanguages = skillGroups[skillGroups.length - 1]
 

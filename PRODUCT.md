@@ -8,7 +8,7 @@ web
 
 ## Users
 
-Primary users are recruiters and hiring managers evaluating Edgar Alejandro Cedeño Suárez for junior/entry-level full-stack developer roles, both Mexican employers (Aguascalientes region, on-site/hybrid) and international/remote employers, weighted equally — no single audience takes priority over the other. They are scanning quickly to decide whether to reach out, not reading deeply on a first pass.
+Primary users are recruiters and hiring managers evaluating Edgar Alejandro Cedeño Suárez for junior/entry-level full-stack developer roles, both Mexican employers (Aguascalientes region, on-site/hybrid) and international/remote employers, weighted equally, no single audience takes priority over the other. They are scanning quickly to decide whether to reach out, not reading deeply on a first pass.
 
 ## Product Purpose
 
@@ -28,13 +28,13 @@ Secondary, supporting truths (already present in copy, not to be dropped): he al
 
 ## Capabilities and Constraints
 
-- Static HTML/CSS/JS only — no framework, no build pipeline. Any redesign must stay deployable the same way.
-- Real content only: work history at Foresight and Key Depot, AWS Academy credential, real contact channels (email, LinkedIn, GitHub, phone). No fabricated projects, screenshots, or testimonials exist to show — the site is text/credential-based, not a visual project gallery.
+- Static HTML/CSS/JS only, no framework, no build pipeline. Any redesign must stay deployable the same way.
+- Real content only: work history at Foresight and Key Depot, AWS Academy credential, real contact channels (email, LinkedIn, GitHub, phone). No fabricated projects, screenshots, or testimonials exist to show, the site is text/credential-based, not a visual project gallery.
 - Accessibility work already in place (focus-visible states, `prefers-reduced-motion` handling, semantic nav with aria-expanded) is a constraint to preserve, not rebuild.
 
 ## Brand Commitments
 
-None confirmed yet beyond the person's real name, role, and existing contact identities (GitHub `AlexCedeno-dev`, LinkedIn, email, phone). No pinned visual identity — the current terminal-hacker/cyan-on-navy look is incumbent implementation, not a brand commitment, and is explicitly open to replacement.
+None confirmed yet beyond the person's real name, role, and existing contact identities (GitHub `AlexCedeno-dev`, LinkedIn, email, phone). No pinned visual identity, the current terminal-hacker/cyan-on-navy look is incumbent implementation, not a brand commitment, and is explicitly open to replacement.
 
 ## Evidence on Hand
 
@@ -44,8 +44,8 @@ None confirmed yet beyond the person's real name, role, and existing contact ide
 ## Product Principles
 
 1. Speed-of-adoption across stacks is the story the surface must make legible at a glance, not just list.
-2. Copy, section order, and accessibility behavior already work — visual replacement changes the surface's world, not its truths or structure.
-3. Design must read equally credibly to a Mexican on-site recruiter and an international remote-hiring skim-reader — no locale-specific in-joke that only one audience gets.
+2. Copy, section order, and accessibility behavior already work, visual replacement changes the surface's world, not its truths or structure.
+3. Design must read equally credibly to a Mexican on-site recruiter and an international remote-hiring skim-reader, no locale-specific in-joke that only one audience gets.
 4. No invented projects, metrics, or claims; the honest absence of a project gallery is real and stays real.
 
 ## Accessibility & Inclusion
