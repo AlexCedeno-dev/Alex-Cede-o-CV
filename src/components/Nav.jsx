@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useContent } from '../data/useContent'
 
@@ -23,7 +24,9 @@ export default function Nav() {
   return (
     <nav>
       <div className="wrap">
-        <div className="logo">Alejandro <span>Cedeño</span></div>
+        <NavLink to="/" end className="logo" onClick={() => setOpen(false)}>
+          Alejandro <span>Cedeño</span>
+        </NavLink>
         <button
           ref={toggleRef}
           className="nav-toggle"
@@ -37,9 +40,9 @@ export default function Nav() {
         </button>
         <div className={`navlinks${open ? ' open' : ''}`} id="navlinks">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            <NavLink key={link.to} to={link.to} end={link.to === '/'} onClick={() => setOpen(false)}>
               {link.label}
-            </a>
+            </NavLink>
           ))}
         </div>
       </div>

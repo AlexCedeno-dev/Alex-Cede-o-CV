@@ -21,10 +21,9 @@ export default function Hero() {
             <h1>Edgar Alejandro<br />Cedeño Suárez&nbsp;—<br /><em>Full-Stack Developer</em></h1>
             <p className="lead">{t.hero.lead}</p>
             <div className="hero-cta">
-              <Button variant="primary" href="#contact">{t.hero.ctaContact}</Button>
+              <Button variant="primary" to="/cv" state={{ scrollTo: 'contact' }}>{t.hero.ctaContact}</Button>
+              <Button variant="ghost" to="/cv">{t.hero.ctaCvFull}</Button>
               <Button variant="ghost" href={cvHref} download>{t.hero.ctaCv}</Button>
-              <Button variant="ghost" href="#experience">{t.hero.ctaExperience}</Button>
-              <Button variant="ghost" href="https://github.com/AlexCedeno-dev" external>{t.hero.ctaGithub}</Button>
             </div>
           </div>
           <Ledger />

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { colors, easeOutStrong } from '../motion'
 
 // Salida rápida (140ms), entrada un poco más deliberada (220ms), aplicada
@@ -31,21 +32,37 @@ const ghostVariants = {
   },
 }
 
-export default function Button({ variant = 'ghost', href, children, external = false, download }) {
+const MotionLink = motion(Link)
+
+// href = link externo/mailto/descarga (ancla normal). to = ruta interna
+// del sitio (usa react-router Link, soporta pasar `state`, ej. para
+// indicarle a la página destino que haga scroll a una sección).
+export default function Button({ variant = 'ghost', href, to, state, children, external = false, download }) {
   const variants = variant === 'primary' ? primaryVariants : ghostVariants
+  const sharedProps = {
+    className: `btn ${variant}`,
+    variants,
+    initial: 'rest',
+    animate: 'rest',
+    whileHover: 'hover',
+    whileTap: { scale: 0.97, transition: { duration: 0.1, ease: easeOutStrong } },
+  }
+
+  if (to) {
+    return (
+      <MotionLink to={to} state={state} {...sharedProps}>
+        {children}
+      </MotionLink>
+    )
+  }
 
   return (
     <motion.a
-      className={`btn ${variant}`}
       href={href}
       target={external ? '_blank' : undefined}
       rel={external ? 'noopener' : undefined}
       download={download}
-      variants={variants}
-      initial="rest"
-      animate="rest"
-      whileHover="hover"
-      whileTap={{ scale: 0.97, transition: { duration: 0.1, ease: easeOutStrong } }}
+      {...sharedProps}
     >
       {children}
     </motion.a>

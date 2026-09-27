@@ -210,6 +210,8 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
 .navlinks{ display:flex; gap:28px; font-family: var(--body); font-weight:500; font-size:0.875rem; color: var(--ink-dim); }
 .navlinks a{ transition: color .2s ease; }
 .navlinks a:hover{ color: var(--stamp); }
+.navlinks a.active{ color: var(--stamp); font-weight: 600; }
+.logo.active span{ color: var(--stamp); }
 
 .nav-toggle{
   display:none;
@@ -338,6 +340,54 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
   cursor: pointer;
 }
 .a11y-switch-row input{ width:18px; height:18px; accent-color: var(--stamp); cursor:pointer; flex-shrink:0; }
+
+/* ---------- secondary page header (CV / Proyectos / Skills) ---------- */
+.page-header{ padding-top: 140px; padding-bottom: 8px; }
+@media (max-width: 860px){ .page-header{ padding-top: 100px; } }
+.page-back{
+  display:inline-block;
+  font-family: var(--body); font-weight:600; font-size: 0.8125rem;
+  color: var(--ink-dim);
+  margin-bottom: 20px;
+  transition: color .2s ease;
+}
+.page-back:hover{ color: var(--stamp); }
+.page-eyebrow{ margin-bottom: 8px; }
+.page-title{
+  font-family: var(--display);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+.page-header .rule{ margin-bottom: 8px; }
+.page-header + section{ padding-top: 32px; }
+
+/* ---------- home: índice / teaser cards ---------- */
+#index{ padding-top: 56px; }
+.teaser-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 28px; }
+@media (max-width: 860px){ .teaser-grid{ grid-template-columns: 1fr; } }
+.teaser-card{
+  display:block;
+  background: var(--paper-alt);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.teaser-card:hover{
+  border-color: var(--stamp);
+  transform: translateY(-3px);
+  box-shadow: 4px 6px 0 rgba(33,29,22,0.08);
+}
+.teaser-numero{ display:block; margin-bottom: 12px; }
+.teaser-card h3{ font-family: var(--display); font-size: 1.1875rem; font-weight:700; margin-bottom: 8px; }
+.teaser-card p{ font-size: 0.875rem; color: var(--ink-dim); line-height: 1.6; margin-bottom: 16px; }
+.teaser-link{
+  font-family: var(--body); font-weight:600; font-size: 0.8125rem;
+  color: var(--stamp);
+}
+.teaser-card:hover .teaser-link{ text-decoration: underline; }
 
 /* ---------- hero / ledger panel ---------- */
 .hero{
@@ -546,6 +596,74 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
   transition: border-color .2s ease, color .2s ease;
 }
 .tag:hover{ border-color: var(--stamp); color: var(--stamp); }
+
+/* ---------- skills detail page ---------- */
+.skill-detail-groups{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 32px 40px; margin-bottom: 40px; }
+@media (max-width: 700px){ .skill-detail-groups{ grid-template-columns: 1fr; } }
+.skill-detail-list{ display:flex; flex-direction:column; gap: 14px; }
+.skill-detail-row{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+.skill-detail-name{ font-size: 0.90625rem; color: var(--ink); font-weight: 500; }
+.skill-level-dots{ display:flex; gap:5px; flex-shrink:0; }
+.skill-level-dot{ width:8px; height:8px; border-radius: 2px; background: transparent; border: 1.5px solid var(--ink-dimmer); }
+.skill-level-dot.filled{ background: var(--stamp); border-color: var(--stamp); }
+.skill-used-in{ font-family: var(--mono); font-size: 0.71875rem; color: var(--ink-dimmer); margin-top: 2px; }
+.skill-detail-languages{ max-width: 320px; }
+
+/* ---------- projects ---------- */
+.project-list{ display:flex; flex-direction:column; gap:20px; }
+.project-card{
+  background: var(--paper-alt);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+.project-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom: 16px; }
+.project-head h2{ font-family: var(--display); font-size: 1.5rem; font-weight:800; }
+.project-tagline{ font-size: 0.96875rem; color: var(--stamp); margin-top: 2px; }
+.project-period{ flex-shrink:0; padding-top: 4px; }
+.project-description{ font-size: 0.90625rem; color: var(--ink-dim); line-height: 1.7; max-width: 74ch; margin-bottom: 14px; }
+.project-role-label{ margin-top: 14px; margin-bottom: 2px; }
+.project-demo-link{ display:inline-block; margin-top: 16px; margin-bottom: 28px; }
+.project-links{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 16px; }
+.project-link{
+  font-family: var(--body); font-weight:600; font-size: 0.8125rem;
+  padding: 6px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--ink-dim);
+  transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+.project-link:hover{ border-color: var(--stamp); color: var(--stamp); }
+.project-link.demo{ border-color: var(--stamp); color: var(--stamp); background: var(--stamp-dim); }
+.project-link.demo:hover{ background: var(--stamp); color: var(--paper); }
+
+.project-gallery{ display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-bottom: 20px; }
+.project-gallery img{
+  width:100%; aspect-ratio: 16/10; object-fit: cover;
+  border: 1.5px solid var(--border); border-radius: var(--radius);
+  display:block;
+}
+.project-gallery-empty{
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align:center;
+  margin-bottom: 20px;
+}
+
+.project-components-label{ margin-bottom: 12px; }
+.project-components{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+@media (max-width: 700px){ .project-components{ grid-template-columns: 1fr; } }
+.project-component{
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.35);
+  padding: 16px;
+}
+html[data-theme="dark"] .project-component{ background: rgba(255,255,255,0.03); }
+.project-component-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom: 8px; }
+.project-component-head h3{ font-family: var(--display); font-size: 1rem; font-weight:700; }
+.project-component p{ font-size: 0.84375rem; color: var(--ink-dim); line-height: 1.6; }
 
 /* ---------- hobbies as soft-skill proof ---------- */
 .hobby-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }

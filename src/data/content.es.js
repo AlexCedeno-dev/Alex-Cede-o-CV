@@ -1,10 +1,8 @@
 export const navLinks = [
-  { href: '#about', label: 'sobre-mi' },
-  { href: '#experience', label: 'experiencia' },
-  { href: '#education', label: 'educación' },
-  { href: '#skills', label: 'skills' },
-  { href: '#hobbies', label: 'hobbies' },
-  { href: '#contact', label: 'contacto' },
+  { to: '/', label: 'inicio' },
+  { to: '/cv', label: 'cv' },
+  { to: '/proyectos', label: 'proyectos' },
+  { to: '/skills', label: 'skills' },
 ]
 
 export const ledgerFields = [
@@ -88,6 +86,69 @@ export const skillGroups = [
   },
 ]
 
+// Nivel 1-3 y "usedIn" son un borrador derivado de en cuántos empleos o
+// proyectos reales aparece cada tecnología (ver jobs[].tecnologias y
+// projects[].stack) — no un autodiagnóstico. Edgar debería revisarlos y
+// ajustarlos antes de publicarlos como definitivos.
+export const skillsDetailed = [
+  {
+    title: 'Lenguajes',
+    items: [
+      { name: 'JavaScript', level: 3, usedIn: ['GreonTrack', 'Foresight', 'Key Depot'] },
+      { name: 'SQL', level: 3, usedIn: ['Foresight', 'Key Depot', 'GreonTrack'] },
+      { name: 'TypeScript', level: 2, usedIn: ['GreonTrack'] },
+      { name: 'PHP', level: 2, usedIn: ['Key Depot'] },
+      { name: 'Java', level: 1, usedIn: [] },
+      { name: 'C++', level: 1, usedIn: [] },
+      { name: 'Kotlin', level: 1, usedIn: [] },
+    ],
+  },
+  {
+    title: 'Frontend',
+    items: [
+      { name: 'React', level: 3, usedIn: ['Foresight', 'GreonTrack'] },
+      { name: 'HTML', level: 3, usedIn: ['Foresight', 'Key Depot', 'GreonTrack'] },
+      { name: 'CSS', level: 3, usedIn: ['Foresight', 'Key Depot', 'GreonTrack'] },
+      { name: 'React Native', level: 2, usedIn: ['Foresight'] },
+      { name: 'Angular v19', level: 2, usedIn: ['Key Depot'] },
+      { name: 'Bootstrap', level: 1, usedIn: [] },
+      { name: 'Material UI', level: 1, usedIn: [] },
+      { name: 'Materialize', level: 1, usedIn: [] },
+      { name: 'Bulma', level: 1, usedIn: [] },
+    ],
+  },
+  {
+    title: 'Backend & datos',
+    items: [
+      { name: 'Node.js', level: 3, usedIn: ['Foresight', 'GreonTrack'] },
+      { name: 'APIs REST', level: 3, usedIn: ['Foresight', 'GreonTrack'] },
+      { name: 'MySQL', level: 3, usedIn: ['Foresight', 'Key Depot'] },
+      { name: 'Express', level: 2, usedIn: ['GreonTrack'] },
+      { name: 'SQL Server', level: 1, usedIn: [] },
+    ],
+  },
+  {
+    title: 'Herramientas',
+    items: [
+      { name: 'GitHub', level: 3, usedIn: [] },
+      { name: 'Figma', level: 2, usedIn: [] },
+      { name: 'N8N', level: 2, usedIn: ['Key Depot'] },
+      { name: 'Postman', level: 1, usedIn: [] },
+      { name: 'VS Code', level: 1, usedIn: [] },
+    ],
+  },
+  {
+    title: 'Otros',
+    items: [
+      { name: 'Active Directory', level: 2, usedIn: ['Foresight'] },
+      { name: 'Webhooks', level: 2, usedIn: ['Key Depot'] },
+      { name: 'Openpay', level: 2, usedIn: ['Key Depot'] },
+      { name: 'SEO básico', level: 1, usedIn: [] },
+      { name: 'Gestión de dominios', level: 1, usedIn: [] },
+    ],
+  },
+]
+
 export const hobbies = [
   {
     code: 'TM',
@@ -124,6 +185,47 @@ export const hobbies = [
     title: 'En conjunto',
     text: 'Estos hábitos comparten un patrón: entornos donde varias personas dependen entre sí, con tiempos definidos y un resultado que se nota si algo falla.',
     skill: '→ adaptación a distintos ambientes',
+  },
+]
+
+export const projects = [
+  {
+    id: 'PROJ-001',
+    title: 'GreonTrack',
+    period: '2026',
+    tagline: 'Sistema inteligente de análisis del consumo energético',
+    description:
+      'Proyecto de seminario compuesto por cuatro partes conectadas entre sí: una app web donde el usuario registra sus dispositivos y ve su consumo estimado en kWh, costo eléctrico y huella de carbono; un backend que calcula y sirve esos datos; un agente que corre en segundo plano en la laptop del usuario y reporta automáticamente las horas de uso; y un sniffer de red que escanea la red local (ARP, mDNS, SSDP) para sugerir automáticamente los dispositivos conectados en vez de darlos de alta uno por uno a mano.',
+    stack: ['React', 'TypeScript', 'Vite', 'Node.js', 'Express', 'Supabase', 'Python'],
+    role: 'Desarrollo full-stack de las cuatro partes del sistema (frontend, backend, agente y sniffer) y diseño del esquema de base de datos en Supabase.',
+    demoHref: 'https://alexcedeno-dev.github.io/GreonTrack-Frontend/',
+    images: [],
+    components: [
+      {
+        name: 'Frontend',
+        description:
+          'App web en React + TypeScript + Vite donde el usuario se registra, inicia sesión, da de alta sus dispositivos y ve su consumo estimado, costo eléctrico y huella de carbono, con recomendaciones de ahorro. Habla directo con Supabase (Auth + Postgres), sin backend propio para esa parte.',
+        repo: 'https://github.com/AlexCedeno-dev/GreonTrack-Frontend',
+      },
+      {
+        name: 'Backend',
+        description:
+          'API en Node.js + Express que recibe, calcula y sirve los datos de consumo energético de los dispositivos registrados, incluyendo las horas de uso reportadas manualmente o de forma automática por el Agente.',
+        repo: 'https://github.com/AlexCedeno-dev/GreonTrack-Backend',
+      },
+      {
+        name: 'Agente',
+        description:
+          'Servicio en Node.js que corre en segundo plano en la laptop del usuario y reporta periódicamente cuánto tiempo lleva encendida la máquina, para automatizar la captura de horas de uso sin que el usuario tenga que registrarlas a mano.',
+        repo: 'https://github.com/AlexCedeno-dev/GreonTrack-Agente',
+      },
+      {
+        name: 'Sniffer',
+        description:
+          'Script en Python que escanea la red local (ARP, mDNS, SSDP) para identificar qué dispositivos hay conectados (celular, laptop, TV, IoT) y sube sugerencias a la cuenta del usuario, en vez de que los agregue uno por uno a mano.',
+        repo: 'https://github.com/AlexCedeno-dev/GreonTrack-Sniffer',
+      },
+    ],
   },
 ]
 
