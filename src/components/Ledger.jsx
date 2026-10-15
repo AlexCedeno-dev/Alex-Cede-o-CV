@@ -1,38 +1,50 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useContent } from '../data/useContent'
-import { stampEase } from '../motion'
+import LocalTime from './home/LocalTime'
+import { heroTiming, stampSpring } from '../motion'
 
-// Puerta de expediente: las filas entran una a una (antes setTimeout recursivo
-// en script.js), ahora como stagger declarativo que Framer Motion puede interrumpir.
+// La hora local va justo después de la ubicación.
+const LOCAL_TIME_AFTER = 2
+
+// Puerta de expediente: las filas entran una a una como stagger declarativo,
+// sincronizado con la entrada del hero (ver heroTiming en motion.js).
 export default function Ledger() {
   const shouldReduceMotion = useReducedMotion()
   const { t } = useLanguage()
-  const { ledgerFields } = useContent()
+  const { ledgerFields, homeLabels } = useContent()
+
+  const rows = [
+    ...ledgerFields.slice(0, LOCAL_TIME_AFTER + 1),
+    { k: homeLabels.localTime, clock: true },
+    ...ledgerFields.slice(LOCAL_TIME_AFTER + 1),
+  ]
 
   const containerVariants = {
     hidden: {},
-    show: { transition: { staggerChildren: shouldReduceMotion ? 0 : 0.26 } },
+    show: {
+      transition: { delayChildren: heroTiming.ledgerRows, staggerChildren: heroTiming.ledgerStagger },
+    },
   }
 
   const rowVariants = {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { duration: shouldReduceMotion ? 0 : 0.35, ease: 'easeOut' } },
+    show: { opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } },
   }
 
+  // Estampado: entra un poco grande y girado, y asienta con un rebote corto.
+  // El retraso es absoluto (desde el montaje), no relativo a su fila.
   const stampVariants = {
-    hidden: { opacity: 0, scale: 2, rotate: -14 },
+    hidden: { opacity: 0, scale: 1.25, rotate: -6 },
     show: {
-      opacity: [0, 1, 1],
+      opacity: 1,
       scale: 1,
       rotate: -1.2,
-      transition: shouldReduceMotion
-        ? { duration: 0 }
-        : {
-            opacity: { duration: 0.5, times: [0, 0.6, 1], ease: stampEase },
-            scale: { duration: 0.5, ease: stampEase },
-            rotate: { duration: 0.5, ease: stampEase },
-          },
+      transition: {
+        opacity: { duration: 0.12, ease: 'easeOut', delay: heroTiming.stamp },
+        scale: { ...stampSpring, delay: heroTiming.stamp },
+        rotate: { ...stampSpring, delay: heroTiming.stamp },
+      },
     },
   }
 
@@ -42,11 +54,18 @@ export default function Ledger() {
         <span>{t.ledger.title}</span>
         <span>2026</span>
       </div>
-      <motion.div className="ledger-body" initial="hidden" animate="show" variants={containerVariants}>
-        {ledgerFields.map((item) => (
+      <motion.div
+        className="ledger-body"
+        initial={shouldReduceMotion ? false : 'hidden'}
+        animate="show"
+        variants={containerVariants}
+      >
+        {rows.map((item) => (
           <motion.div key={item.k} className="ledger-row" variants={rowVariants}>
             <span className="field">{item.k}</span>{' '}
-            {item.stamp ? (
+            {item.clock ? (
+              <LocalTime />
+            ) : item.stamp ? (
               <motion.span className="stamp active" variants={stampVariants}>
                 {item.stamp}
               </motion.span>

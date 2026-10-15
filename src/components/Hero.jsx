@@ -1,7 +1,11 @@
 import Button from './Button'
 import Ledger from './Ledger'
+import HeroTitle from './home/HeroTitle'
+import FadeIn from './home/FadeIn'
+import Magnetic from './home/Magnetic'
 import { useLanguage } from '../i18n/LanguageContext'
 import { refCode } from '../data/shared'
+import { heroTiming } from '../motion'
 
 export default function Hero() {
   const { t, lang } = useLanguage()
@@ -18,13 +22,19 @@ export default function Hero() {
         <div className="rule" />
         <div className="hero-grid">
           <div>
-            <h1>Edgar Alejandro<br />Cedeño Suárez<br /><em>Full-Stack Developer</em></h1>
-            <p className="lead">{t.hero.lead}</p>
-            <div className="hero-cta">
-              <Button variant="primary" to="/cv" state={{ scrollTo: 'contact' }}>{t.hero.ctaContact}</Button>
-              <Button variant="ghost" to="/cv">{t.hero.ctaCvFull}</Button>
-              <Button variant="ghost" href={cvHref} download>{t.hero.ctaCv}</Button>
-            </div>
+            <HeroTitle />
+            <FadeIn as="p" className="lead" delay={heroTiming.lead}>{t.hero.lead}</FadeIn>
+            <FadeIn className="hero-cta" delay={heroTiming.cta}>
+              <Magnetic>
+                <Button variant="primary" to="/cv" state={{ scrollTo: 'contact' }}>{t.hero.ctaContact}</Button>
+              </Magnetic>
+              <Magnetic>
+                <Button variant="ghost" to="/cv">{t.hero.ctaCvFull}</Button>
+              </Magnetic>
+              <Magnetic>
+                <Button variant="ghost" href={cvHref} download>{t.hero.ctaCv}</Button>
+              </Magnetic>
+            </FadeIn>
           </div>
           <Ledger />
         </div>

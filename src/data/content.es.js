@@ -235,3 +235,9 @@ export const contactFields = [
   { label: 'LinkedIn', value: 'linkedin.com/in/alejandro-cedeño', href: 'https://www.linkedin.com/in/alejandro-cede%C3%B1o-b55660331/', external: true },
   { label: 'Teléfono', value: '+52 449 168 4651', href: 'tel:+524491684651' },
 ]
+
+// Etiquetas de la Home (reloj del Quick Profile y enlace de las tarjetas).
+export const homeLabels = {
+  localTime: 'hora local',
+  view: 'Ver',
+}
