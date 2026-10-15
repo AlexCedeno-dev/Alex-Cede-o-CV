@@ -9,11 +9,11 @@ const lines = [
 
 // Cada línea sube desde debajo de su propia máscara (overflow:hidden).
 // Solo se anima transform: el alto de cada línea queda reservado desde el inicio.
-export default function HeroTitle() {
+export default function HeroTitle({ id }) {
   const shouldReduceMotion = useReducedMotion()
 
   return (
-    <h1>
+    <h1 id={id} tabIndex={-1}>
       {lines.map((line, i) => (
         <span className="line-mask" key={line.key}>
           <motion.span

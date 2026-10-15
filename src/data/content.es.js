@@ -241,3 +241,36 @@ export const homeLabels = {
   localTime: 'hora local',
   view: 'Ver',
 }
+
+// Capítulos del Home (§ I a § IV): solo etiquetas y enlaces; los datos
+// (proyecto, skills, contacto) se leen de las colecciones de arriba.
+export const homeChapters = {
+  indexLabel: 'Capítulos del inicio',
+  chapters: [
+    { id: 'cap-i', numero: '§ I', label: 'Quién soy' },
+    { id: 'cap-ii', numero: '§ II', label: 'Qué construyo' },
+    { id: 'cap-iii', numero: '§ III', label: 'Con qué lo construyo' },
+    { id: 'cap-iv', numero: '§ IV', label: 'Contacto' },
+  ],
+  build: {
+    repo: 'Repositorio',
+    demo: 'Demo en vivo',
+    project: 'Desglose completo del proyecto',
+    external: 'Servicio externo · base de datos',
+    connectionsHeading: 'Cómo se conectan las partes',
+    edges: {
+      frontendSupabase: 'Auth + Postgres',
+      backendSupabase: 'service role',
+      agentBackend: 'POST /agent/uso',
+      snifferSupabase: 'directo',
+    },
+    reads: 'lee y escribe en',
+    sends: 'envía a',
+  },
+  stack: {
+    allSkills: 'Todas las skills, con nivel y dónde las usé',
+  },
+  contact: {
+    cta: 'Ir al formulario de contacto',
+  },
+}
