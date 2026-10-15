@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Nav from './components/Nav'
+import Footer from './components/Footer'
 import AccessibilityPanel from './components/AccessibilityPanel'
 import Home from './pages/Home'
 import Cv from './pages/Cv'
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/skills" element={<SkillsDetail />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      <Footer />
       <AccessibilityPanel />
     </>
   )

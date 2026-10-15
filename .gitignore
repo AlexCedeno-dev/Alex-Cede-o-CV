@@ -24,3 +24,6 @@ dist-ssr
 
 # Backup local del historial de git
 .git-historial-backup.txt
+
+# Capturas y snapshots de Playwright MCP
+.playwright-mcp/

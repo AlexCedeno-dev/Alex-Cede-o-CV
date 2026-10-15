@@ -2,7 +2,6 @@ import { useState } from 'react'
 import Reveal from './Reveal'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useContent } from '../data/useContent'
-import { fullName, refCode } from '../data/shared'
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/meaoqbjv'
 
@@ -90,7 +89,7 @@ export default function Contacto() {
   const { contactFields } = useContent()
 
   return (
-    <footer id="contact">
+    <section id="contact">
       <div className="wrap">
         <Reveal className="contact-box">
           <div className="contact-grid">
@@ -117,11 +116,7 @@ export default function Contacto() {
             <ContactForm />
           </div>
         </Reveal>
-        <div className="foot-meta">
-          <span>© 2026 · {fullName} · Ref. {refCode}</span>
-          <span>{t.contact.rightsLine}</span>
-        </div>
       </div>
-    </footer>
+    </section>
   )
 }
