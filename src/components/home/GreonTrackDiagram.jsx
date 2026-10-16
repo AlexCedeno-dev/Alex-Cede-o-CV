@@ -56,7 +56,9 @@ function Edge({ edge, geometry, label, progress, range, fontSize }) {
 // Diagrama de GreonTrack. El SVG (líneas, flechas, etiquetas) es decorativo;
 // las fichas son una lista real de enlaces y debajo va la descripción textual
 // de cada conexión, así que nada depende de ver el dibujo.
-export default function GreonTrackDiagram({ layoutKey, pinned, sectionRef, components, labels }) {
+// `large` (página de proyecto) lo deja al ancho completo, sin el tope de altura
+// de ventana que necesita el Home para caber en una pantalla pegajosa.
+export default function GreonTrackDiagram({ layoutKey, pinned, large = false, sectionRef, components, labels }) {
   const diagramRef = useRef(null)
   const progress = useDiagramProgress(pinned ? sectionRef : diagramRef, pinned)
   const layout = graphLayouts[layoutKey]
@@ -93,7 +95,7 @@ export default function GreonTrackDiagram({ layoutKey, pinned, sectionRef, compo
   return (
     <div className="gt">
       <div
-        className={`gt-diagram gt-${layoutKey}`}
+        className={`gt-diagram gt-${layoutKey}${large ? ' gt-large' : ''}`}
         ref={diagramRef}
         style={{ aspectRatio: `${layout.width} / ${layout.height}` }}
       >

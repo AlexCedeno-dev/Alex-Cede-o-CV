@@ -538,6 +538,9 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
   margin: 0 auto;
 }
 .gt-tall{ width: 100%; max-width: 420px; }
+.gt-large.gt-wide{ width: 100%; }
+.gt-large.gt-wide .gt-node-name{ font-size: clamp(1.0625rem, 1.9cqw, 1.3125rem); }
+.gt-large.gt-wide .gt-node > a .gt-node-meta{ font-size: clamp(0.75rem, 1.2cqw, 0.875rem); }
 .gt-svg{ position:absolute; inset:0; width:100%; height:100%; overflow: visible; }
 .gt-edge-track{ fill:none; stroke: var(--border); stroke-width: 1.5; stroke-dasharray: 2 6; }
 .gt-edge-line,
@@ -553,6 +556,12 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
   transition: opacity .35s ease, transform .35s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .gt-tall .gt-node{ width: 43cqw; }
+/* Escritorio: el repo no se parte nunca. El ancho mínimo cubre el nombre más
+   largo (GreonTrack-Frontend ↗) a la fuente mínima, aunque el diagrama se
+   encoja por una ventana baja; así los cuatro nodos propios miden lo mismo. */
+.gt-wide .gt-node{ width: max(21.6cqw, 176px); }
+.gt-wide .gt-node > a{ padding-inline: 11px; }
+.gt-wide .gt-node > a .gt-node-meta{ white-space: nowrap; letter-spacing: 0; }
 .gt-node[data-lit="true"],
 .gt-node:focus-within{ opacity: 1; transform: translate(-50%, -50%) scale(1); }
 .gt-node > a,
@@ -1015,6 +1024,68 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
 .project-component-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom: 8px; }
 .project-component-head h3{ font-family: var(--display); font-size: 1rem; font-weight:700; }
 .project-component p{ font-size: 0.84375rem; color: var(--ink-dim); line-height: 1.6; }
+
+/* ---------- página de proyecto (GreonTrack) ---------- */
+.pj-head{ max-width: 74ch; }
+.pj-head-top{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom: 14px; }
+.pj-name{ font-family: var(--display); font-size: clamp(1.75rem, 3.4vw, 2.25rem); font-weight:800; line-height:1.1; }
+.pj-description{ font-size: 0.96875rem; color: var(--ink-dim); line-height: 1.7; margin-bottom: 18px; }
+.pj-role{ margin-bottom: 22px; }
+.pj-role .field-label{ display:block; margin-bottom: 2px; }
+.pj-demo{
+  display:inline-block;
+  font-weight:600; font-size: 0.9375rem;
+  color: var(--verified);
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 1px;
+}
+.pj-demo:hover{ border-bottom-style: dashed; }
+.pj-demo span{ display:inline-block; transition: transform 240ms cubic-bezier(0.23, 1, 0.32, 1); }
+@media (hover: hover) and (pointer: fine){ .pj-demo:hover span{ transform: translate(2px, -2px); } }
+
+.pj-section{ margin-top: 64px; }
+.pj-subheading{
+  font-family: var(--display); font-size: 1.25rem; font-weight:700;
+  padding-bottom: 10px; margin-bottom: 14px;
+  border-bottom: 1.5px solid var(--border);
+}
+.pj-note{ font-size: 0.875rem; color: var(--ink-dim); max-width: 64ch; margin-bottom: 26px; }
+
+.pj-cards{ display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 22px; }
+@media (max-width: 800px){ .pj-cards{ grid-template-columns: 1fr; } }
+.pj-cards > *{ display:flex; }
+.pj-card{
+  display:flex; flex-direction:column; width:100%;
+  background: var(--paper-alt);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+.pj-card-media{ display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 18px; }
+.pj-card-media img{ width:100%; aspect-ratio: 16/10; object-fit: cover; border: 1.5px solid var(--border); border-radius: var(--radius); display:block; }
+.pj-card-name{ font-family: var(--display); font-size: 1.25rem; font-weight:800; margin-bottom: 14px; }
+.pj-card .field-label{ margin-bottom: 4px; }
+.pj-card-text{ font-size: 0.875rem; color: var(--ink-dim); line-height: 1.65; margin-bottom: 18px; }
+.pj-tech{ list-style:none; display:flex; flex-wrap:wrap; gap:6px; margin-bottom: 20px; }
+.pj-tech li{
+  font-family: var(--mono); font-size: 0.75rem;
+  padding: 5px 10px; border-radius: var(--radius);
+  background: var(--surface-cool); border: 1px solid var(--border);
+  color: var(--ink-dim);
+}
+.pj-repo{
+  margin-top:auto; align-self:flex-start;
+  font-weight:600; font-size: 0.875rem;
+  color: var(--verified);
+  border-bottom: 1.5px solid currentColor;
+}
+.pj-repo:hover{ border-bottom-style: dashed; }
+
+.pj-decision{ max-width: 74ch; margin-top: 22px; }
+.pj-decision-lead{ font-size: 1rem; line-height: 1.65; margin: 6px 0 20px; }
+.pj-decision-points{ display:grid; gap: 16px; border-left: 2px solid var(--accent); padding-left: 20px; }
+.pj-decision-points dt{ font-weight:700; font-size: 0.875rem; margin-bottom: 2px; }
+.pj-decision-points dd{ font-size: 0.875rem; color: var(--ink-dim); line-height: 1.65; }
 
 /* ---------- hobbies as soft-skill proof ---------- */
 .hobby-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
