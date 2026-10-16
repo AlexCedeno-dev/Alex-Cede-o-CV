@@ -8,13 +8,13 @@ const primaryVariants = {
   rest: {
     x: 0,
     y: 0,
-    boxShadow: '0 0 0 rgba(33,29,22,0)',
+    boxShadow: `0 0 0 ${colors.shadowClear}`,
     transition: { duration: 0.14, ease: easeOutStrong },
   },
   hover: {
     x: -1,
     y: -2,
-    boxShadow: '3px 4px 0 rgba(33,29,22,0.18)',
+    boxShadow: `3px 4px 0 ${colors.shadow}`,
     transition: { duration: 0.22, ease: easeOutStrong },
   },
 }
@@ -22,12 +22,12 @@ const primaryVariants = {
 const ghostVariants = {
   rest: {
     borderColor: colors.border,
-    backgroundColor: 'rgba(33,29,22,0)',
+    backgroundColor: colors.shadowClear,
     transition: { duration: 0.14, ease: 'easeOut' },
   },
   hover: {
     borderColor: colors.ink,
-    backgroundColor: 'rgba(33,29,22,0.04)',
+    backgroundColor: colors.hoverWash,
     transition: { duration: 0.2, ease: 'easeOut' },
   },
 }

@@ -28,15 +28,18 @@ export const revealVariants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: revealEase } },
 }
 
-// Framer Motion interpola colores por valor real, no puede leer var(--token);
-// estos deben mantenerse en sync con las variables de :root en index.css.
+// Tokens de color de index.css. Framer Motion 13 resuelve var(--token) al
+// animar, así que siguen el tema claro/oscuro sin duplicar valores.
 export const colors = {
-  paper: '#F1EAD9',
-  paperAlt: '#E7DDC5',
-  paperDeep: '#DCCFA9',
-  border: '#C3B48C',
-  ink: '#211D16',
-  inkDim: '#5C5340',
-  stamp: '#943E17',
-  stampDim: 'rgba(148,62,23,0.12)',
+  paper: 'var(--paper)',
+  paperAlt: 'var(--paper-alt)',
+  paperDeep: 'var(--paper-deep)',
+  border: 'var(--border)',
+  ink: 'var(--ink)',
+  inkDim: 'var(--ink-dim)',
+  stamp: 'var(--stamp)',
+  stampDim: 'var(--stamp-dim)',
+  shadow: 'var(--shadow-btn)',
+  shadowClear: 'color-mix(in srgb, var(--ink) 0%, transparent)',
+  hoverWash: 'color-mix(in srgb, var(--ink) 4%, transparent)',
 }
