@@ -555,10 +555,20 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
   opacity: 0.45;
   transition: opacity .35s ease, transform .35s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.gt-tall .gt-node{ width: 43cqw; }
+.gt-tall .gt-node{ width: 46cqw; }
 /* Escritorio: el repo no se parte nunca. El ancho mínimo cubre el nombre más
    largo (GreonTrack-Frontend ↗) a la fuente mínima, aunque el diagrama se
    encoja por una ventana baja; así los cuatro nodos propios miden lo mismo. */
+/* Móvil: el repo tampoco se parte; la fuente baja con el ancho del nodo (43cqw)
+   y solo si ni así cabe (pantallas muy angostas) se permite el salto. */
+.gt-tall .gt-node > a{ padding-inline: 8px; }
+.gt-tall .gt-node > a .gt-node-meta{
+  white-space: nowrap; letter-spacing: 0;
+  font-size: clamp(0.5625rem, calc((46cqw - 16px) / 13.2), 0.6875rem);
+}
+@container (max-width: 289px){
+  .gt-tall .gt-node > a .gt-node-meta{ white-space: normal; }
+}
 .gt-wide .gt-node{ width: max(21.6cqw, 176px); }
 .gt-wide .gt-node > a{ padding-inline: 11px; }
 .gt-wide .gt-node > a .gt-node-meta{ white-space: nowrap; letter-spacing: 0; }
@@ -1081,6 +1091,12 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
 }
 .pj-repo:hover{ border-bottom-style: dashed; }
 
+.code-inline{
+  font-family: var(--mono); font-size: 0.875em;
+  padding: 1px 5px; border-radius: 3px;
+  background: var(--surface-cool); border: 1px solid var(--border);
+  overflow-wrap: anywhere;
+}
 .pj-decision{ max-width: 74ch; margin-top: 22px; }
 .pj-decision-lead{ font-size: 1rem; line-height: 1.65; margin: 6px 0 20px; }
 .pj-decision-points{ display:grid; gap: 16px; border-left: 2px solid var(--accent); padding-left: 20px; }

@@ -1,4 +1,5 @@
 import Reveal from '../Reveal'
+import CodeText from '../CodeText'
 import { useLanguage } from '../../i18n/LanguageContext'
 
 // Decisión técnica real documentada en el README del Agente.
@@ -11,12 +12,12 @@ export default function TechnicalDecision() {
       <h3 className="pj-subheading" id="pj-decision-title">{d.heading}</h3>
       <Reveal className="pj-decision">
         <p className="folio">{d.subject}</p>
-        <p className="pj-decision-lead">{d.lead}</p>
+        <p className="pj-decision-lead"><CodeText>{d.lead}</CodeText></p>
         <dl className="pj-decision-points">
           {d.points.map((point) => (
             <div key={point.title}>
               <dt>{point.title}</dt>
-              <dd>{point.text}</dd>
+              <dd><CodeText>{point.text}</CodeText></dd>
             </div>
           ))}
         </dl>
