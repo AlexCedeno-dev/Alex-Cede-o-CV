@@ -268,6 +268,7 @@ export const homeChapters = {
     sends: 'sends to',
   },
   stack: {
+    eyebrow: 'Selected',
     allSkills: 'All skills, with level and where I used them',
   },
   contact: {

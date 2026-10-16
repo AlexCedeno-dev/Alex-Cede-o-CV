@@ -9,8 +9,16 @@ import { useRowHighlight } from '../../hooks/useRowHighlight'
 
 const LEVEL_KEYS = { 1: 'level1', 2: 'level2', 3: 'level3' }
 
-// § III Con qué: una fila de libro contable por categoría, con los mismos
-// datos y niveles que /skills (skillsDetailed), más el enlace a esa página.
+// Solo las de nivel 3; si la categoría no tiene ninguna, las 3 primeras del
+// orden de los datos.
+const featured = (items) => {
+  const top = items.filter((item) => item.level === 3)
+  return top.length ? top : items.slice(0, 3)
+}
+
+// § III Con qué: una fila de libro contable por categoría con una selección
+// de skillsDetailed (mismos datos y niveles que /skills), más el enlace a esa
+// página, que tiene la lista completa.
 export default function ChapterStack({ chapter }) {
   const { t } = useLanguage()
   const { skillsDetailed, homeChapters } = useContent()
@@ -24,13 +32,14 @@ export default function ChapterStack({ chapter }) {
       <div className="wrap">
         <ChapterHead chapter={chapter} />
         <Reveal className="stack-ledger-wrap">
+          <p className="stack-eyebrow">{homeChapters.stack.eyebrow}</p>
           <div className="stack-ledger" ref={listRef}>
             {highlight && <span className="stack-highlight" ref={barRef} aria-hidden="true" />}
             {skillsDetailed.map((group) => (
               <div className="stack-row" data-row key={group.title}>
                 <h3 className="stack-field">{group.title}</h3>
                 <ul className="stack-items">
-                  {group.items.map((item) => (
+                  {featured(group.items).map((item) => (
                     <li className={`stack-item level-${item.level}`} key={item.name}>
                       <span className="stack-item-name">{item.name}</span>
                       <span

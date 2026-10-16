@@ -30,7 +30,7 @@ export default function ChapterBuild({ chapter }) {
             </p>
             <p className="build-links">
               <Link to="/proyectos" className="build-link">{labels.project} <span aria-hidden="true">→</span></Link>
-              <a href={project.demoHref} target="_blank" rel="noopener" className="build-link">
+              <a href={project.demoHref} target="_blank" rel="noopener" className="build-link build-link-ext">
                 {labels.demo} <span aria-hidden="true">↗</span>
               </a>
             </p>

@@ -456,6 +456,7 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
   text-underline-offset: 3px;
 }
 .chapter-link{ margin-top: 28px; }
+.build-link-ext{ color: var(--verified); }
 .chapter-link:hover,
 .build-link:hover{ text-decoration: underline; }
 .chapter-link span,
@@ -533,7 +534,7 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
 .gt-diagram{
   position: relative;
   container-type: inline-size;
-  width: min(100%, calc((100vh - 360px) * 2));
+  width: min(100%, calc((100svh - 330px) * 2));
   margin: 0 auto;
 }
 .gt-tall{ width: 100%; max-width: 420px; }
@@ -541,18 +542,12 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
 .gt-edge-track{ fill:none; stroke: var(--border); stroke-width: 1.5; stroke-dasharray: 2 6; }
 .gt-edge-line,
 .gt-edge-arrow{ fill:none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.gt-edge-label{
-  font-family: var(--mono);
-  fill: var(--ink-dim);
-  paint-order: stroke;
-  stroke: var(--paper);
-  stroke-width: 5px;
-  stroke-linejoin: round;
-}
+.gt-edge-label-bg{ fill: var(--paper); stroke: var(--border); stroke-width: 1; }
+.gt-edge-label{ font-family: var(--mono); fill: var(--ink-dim); }
 .gt-nodes{ list-style:none; position:absolute; inset:0; }
 .gt-node{
   position:absolute;
-  width: 19.6cqw;
+  width: 21.6cqw;
   transform: translate(-50%, -50%) scale(0.97);
   opacity: 0.45;
   transition: opacity .35s ease, transform .35s cubic-bezier(0.23, 1, 0.32, 1);
@@ -569,25 +564,27 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
   border: 1.5px solid var(--border);
   border-radius: var(--radius);
 }
-.gt-node-external{ background: var(--paper); border-style: dashed; }
+.gt-node-external{
+  background: color-mix(in srgb, var(--teal) 14%, var(--paper));
+  border: 2px dotted var(--teal);
+}
 /* borde óxido "encendido": capa encima que solo cambia de opacidad */
-.gt-node > a::after,
-.gt-node-external::after{
+.gt-node > a::after{
   content:''; position:absolute; inset:-1.5px;
   border: 1.5px solid var(--accent); border-radius: inherit;
   opacity: 0; transition: opacity .35s ease;
   pointer-events: none;
 }
-.gt-node-external::after{ border-style: dashed; border-color: var(--teal); }
-.gt-node[data-lit="true"] > a::after,
-.gt-node-external[data-lit="true"]::after{ opacity: 1; }
+.gt-node[data-lit="true"] > a::after{ opacity: 1; }
 .gt-node-name{ font-family: var(--display); font-weight: 700; font-size: clamp(0.9375rem, 1.8cqw, 1.125rem); line-height: 1.2; }
 .gt-node-meta{
-  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.02em;
+  font-family: var(--mono); font-size: clamp(0.6875rem, 1.15cqw, 0.8125rem); letter-spacing: 0.02em;
   color: var(--ink-dim);
   overflow-wrap: anywhere;
 }
-.gt-node > a:hover .gt-node-meta{ color: var(--stamp); text-decoration: underline; }
+/* repos: enlaces externos, en teal */
+.gt-node > a .gt-node-meta{ color: var(--verified); }
+.gt-node > a:hover .gt-node-meta{ text-decoration: underline; }
 .gt-connections{
   display:flex; flex-wrap:wrap; align-items:baseline; gap: 6px 24px;
   margin-top: 18px;
@@ -603,13 +600,19 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
 
 /* § III: libro contable del stack */
 .stack-ledger{ position: relative; border-top: 1px solid var(--border); }
+.stack-eyebrow{
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 10px;
+}
 .stack-row{
   position: relative; z-index: 1;
-  display:grid; grid-template-columns: 190px 1fr; gap: 24px;
-  padding: 18px 12px;
+  display:grid; grid-template-columns: 190px minmax(0, 1fr); gap: 24px;
+  align-items: center;
+  padding: 22px 12px;
   border-bottom: 1px solid var(--border);
 }
-@media (max-width: 640px){ .stack-row{ grid-template-columns: 1fr; gap: 10px; padding: 16px 4px; } }
+@media (max-width: 640px){ .stack-row{ grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 18px 4px; } }
 .stack-highlight{
   position:absolute; top:0; left:0; right:0; z-index: 0;
   height: 100px;
@@ -623,12 +626,17 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
   font-family: var(--mono); font-weight: 400; font-size: 0.75rem;
   letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--stamp);
-  padding-top: 3px;
 }
-.stack-items{ list-style:none; display:flex; flex-wrap:wrap; gap: 10px 22px; }
-.stack-item{ display:inline-flex; align-items:center; gap:8px; font-size: 0.9375rem; }
-.stack-item.level-3 .stack-item-name{ font-weight: 600; }
+/* una fila por categoría; si no cabe, baja de línea en vez de desbordar */
+.stack-items{ list-style:none; display:flex; flex-wrap:wrap; gap: 8px 32px; min-width: 0; }
+.stack-item{
+  display:inline-flex; align-items:center; gap:10px; min-width: 0;
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(1.25rem, 2.3vw, 1.75rem); line-height: 1.15; letter-spacing: -0.01em;
+}
+.stack-item-name{ overflow-wrap: anywhere; }
 .stack-item.level-1 .stack-item-name{ color: var(--ink-dim); }
+.stack-item .skill-level-dot.filled{ background: var(--teal); border-color: var(--teal); }
 
 /* § IV: cierre */
 .closing{ display:grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items:start; }

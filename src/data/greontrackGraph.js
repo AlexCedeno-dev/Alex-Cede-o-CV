@@ -33,13 +33,13 @@ export const graphLayouts = {
   wide: {
     width: 1000,
     height: 500,
-    node: { w: 98, h: 42 },
+    node: { w: 110, h: 34 },
     positions: {
-      frontend: { x: 160, y: 110 },
-      sniffer: { x: 160, y: 390 },
+      frontend: { x: 140, y: 110 },
+      sniffer: { x: 140, y: 390 },
       supabase: { x: 500, y: 250 },
-      backend: { x: 840, y: 110 },
-      agent: { x: 840, y: 390 },
+      backend: { x: 860, y: 110 },
+      agent: { x: 860, y: 390 },
     },
   },
   tall: {

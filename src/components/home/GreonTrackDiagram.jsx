@@ -10,7 +10,10 @@ const EDGE_STEP = 0.21
 const EDGE_SPAN = 0.18
 const windowFor = (i) => [EDGE_START + i * EDGE_STEP, EDGE_START + i * EDGE_STEP + EDGE_SPAN]
 
-const repoName = (href) => href.split('/').pop()
+const LABEL_FONT = 14
+const MONO_ADVANCE = 0.62
+
+const repoName =(href) => href.split('/').pop()
 
 function Edge({ edge, geometry, label, progress, range, fontSize }) {
   const [from, to] = range
@@ -24,18 +27,27 @@ function Edge({ edge, geometry, label, progress, range, fontSize }) {
       <motion.path className="gt-edge-line" d={geometry.d} style={{ pathLength }} />
       <motion.path className="gt-edge-arrow" d={geometry.endArrow} style={{ opacity: arrowOpacity }} />
       {edge.both && <motion.path className="gt-edge-arrow" d={geometry.startArrow} style={{ opacity: arrowOpacity }} />}
-      {fontSize && (
-        <motion.text
-          className="gt-edge-label"
-          x={geometry.label.x}
-          y={geometry.label.y}
-          dy="0.35em"
-          fontSize={fontSize}
-          textAnchor={geometry.label.anchor}
-          style={{ opacity: labelOpacity }}
-        >
-          {label}
-        </motion.text>
+      {geometry.label && (
+        <motion.g style={{ opacity: labelOpacity }}>
+          <rect
+            className="gt-edge-label-bg"
+            x={geometry.label.x - geometry.label.w / 2}
+            y={geometry.label.y - geometry.label.h / 2}
+            width={geometry.label.w}
+            height={geometry.label.h}
+            rx="3"
+          />
+          <text
+            className="gt-edge-label"
+            x={geometry.label.x}
+            y={geometry.label.y}
+            dy="0.35em"
+            fontSize={fontSize}
+            textAnchor="middle"
+          >
+            {label}
+          </text>
+        </motion.g>
       )}
     </g>
   )
@@ -50,7 +62,11 @@ export default function GreonTrackDiagram({ layoutKey, pinned, sectionRef, compo
   const layout = graphLayouts[layoutKey]
   // En el layout vertical (móvil) las etiquetas de las aristas se cruzarían;
   // ahí se omiten porque la lista de conexiones de abajo ya las da en texto.
-  const fontSize = layoutKey === 'wide' ? 13 : null
+  const fontSize = layoutKey === 'wide' ? LABEL_FONT : null
+  const center = { x: layout.width / 2, y: layout.height / 2 }
+  // Recuadro de la etiqueta: la fuente es monoespaciada, así que el ancho sale
+  // del número de caracteres (con un poco de aire a los lados).
+  const labelBox = (text) => (fontSize ? { w: text.length * fontSize * MONO_ADVANCE + 18, h: fontSize + 12 } : null)
 
   // Nodos encendidos: Supabase con la primera arista; cada componente con la suya.
   const litFor = (value) => {
@@ -91,7 +107,13 @@ export default function GreonTrackDiagram({ layoutKey, pinned, sectionRef, compo
             <Edge
               key={edge.id}
               edge={edge}
-              geometry={edgeGeometry(layout.positions[edge.from], layout.positions[edge.to], layout.node)}
+              geometry={edgeGeometry(
+                layout.positions[edge.from],
+                layout.positions[edge.to],
+                layout.node,
+                labelBox(labels.edges[edge.id]),
+                center,
+              )}
               label={labels.edges[edge.id]}
               progress={progress}
               range={windowFor(i)}
