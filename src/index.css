@@ -508,7 +508,85 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
 .chapter-index-item:hover .chapter-index-label,
 .chapter-index-item:focus-visible .chapter-index-label{ opacity:1; transform:none; }
 
-/* § II: única sección pegajosa, solo en escritorio y sin reduced motion */
+/* subtítulo común de capítulos nuevos */
+.chapter-sub{ color: var(--ink-dim); max-width: 56ch; margin: -12px 0 36px; }
+
+/* § II Sellos: círculos que escalan a N sellos (flex con wrap) */
+.seal-list{ list-style:none; display:flex; flex-wrap:wrap; gap: 40px 24px; justify-content:flex-start; }
+.seal-item{ flex: 0 0 224px; min-width: 0; }
+.seal-figure{ margin: 0; display:flex; flex-direction:column; align-items:center; text-align:center; gap: 18px; }
+.seal{
+  --seal-color: var(--brown);
+  --seal-size: 188px;
+  position: relative; display:flex; align-items:center; justify-content:center;
+  width: var(--seal-size); height: var(--seal-size); border-radius: 50%;
+  border: 3px solid var(--seal-color); color: var(--seal-color);
+}
+.seal-slate{ --seal-color: var(--slate); }
+.seal-ring{
+  position:absolute; inset: 9px; border-radius: 50%;
+  border: 1px dashed var(--seal-color);
+}
+.seal-text{ position:relative; display:flex; flex-direction:column; align-items:center; gap: 6px; max-width: 78%; }
+.seal-label, .seal-sub{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; line-height: 1.3; }
+.seal-title{ font-family: var(--display); font-weight: 800; font-size: 22px; line-height: 1.1; overflow-wrap: anywhere; }
+.seal-compact .seal-title{ font-size: 19px; }
+.seal-compact .seal-sub{ font-size: 10px; letter-spacing: 0.06em; }
+.seal-caption{ font-size: 15px; line-height: 1.4; color: var(--slate); max-width: 22ch; }
+@media (max-width: 640px){
+  .seal-list{ gap: 28px 12px; }
+  .seal-item{ flex: 0 0 calc(50% - 6px); }
+  .seal{ --seal-size: 148px; }
+  .seal-ring{ inset: 7px; }
+  .seal-label, .seal-sub{ font-size: 9px; letter-spacing: 0.06em; }
+  .seal-title{ font-size: 17px; }
+  .seal-compact .seal-title{ font-size: 15px; }
+  .seal-compact .seal-sub{ font-size: 8px; }
+  .seal-caption{ font-size: 14px; }
+}
+
+/* § III Hecho a mano */
+.handmade-list{ list-style:none; border-top: 2px solid var(--ink); }
+.handmade-row{
+  display:grid; grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 8px 24px; align-items: baseline;
+  padding: 26px 0; border-bottom: 1px solid var(--border);
+}
+.handmade-num{ font-family: var(--mono); font-size: 0.875rem; color: var(--brown); }
+.handmade-title{ font-family: var(--display); font-weight: 700; font-size: 26px; line-height: 1.15; letter-spacing: -0.01em; }
+.handmade-text{ color: var(--slate); }
+@media (max-width: 760px){
+  .handmade-row{ grid-template-columns: 40px minmax(0, 1fr); }
+  .handmade-text{ grid-column: 2; }
+  .handmade-title{ font-size: 22px; }
+}
+
+/* Proyecto destacado. Colores fijos (no tokens de tema): en oscuro --slate
+   se vuelve claro y el texto sky quedaría invisible sobre él. */
+.featured{
+  --fp-bg: #304C64; --fp-fg: #F1EAD9; --fp-sky: #A4CCD4;
+}
+.featured-card{
+  background: var(--fp-bg); color: var(--fp-fg);
+  padding: 32px; border-radius: 2px;
+}
+.featured-eyebrow{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; margin-bottom: 14px; }
+.featured-name{ font-family: var(--display); font-weight: 800; font-size: clamp(2.25rem, 7vw, 2.75rem); line-height: 1.05; letter-spacing: -0.03em; }
+.featured-tagline{ color: var(--fp-sky); margin-top: 8px; font-size: 1.0625rem; }
+.featured-links{ display:flex; flex-wrap:wrap; gap: 12px 16px; margin-top: 28px; }
+.featured-btn{
+  display:inline-block; padding: 12px 20px; border-radius: var(--radius);
+  font-weight: 600; font-size: 0.9375rem; border: 1.5px solid transparent;
+  transition: transform .18s cubic-bezier(0.23, 1, 0.32, 1), background-color .18s ease;
+}
+.featured-btn:active{ transform: scale(0.97); }
+.featured-btn-main{ background: var(--fp-fg); color: #211D16; }
+.featured-btn-ghost{ border-color: var(--fp-sky); color: var(--fp-sky); }
+.featured-btn-ghost:hover{ background: rgba(164,204,212,0.14); }
+.featured-btn-main:hover{ background: #fff; }
+.featured :focus-visible{ outline-color: var(--fp-sky); }
+
+/* § II (antiguo): única sección pegajosa, solo en escritorio y sin reduced motion */
 .chapter-build{ padding: 0; }
 .chapter-build-pin{ padding: 96px 0; }
 @media (min-width: 769px) and (prefers-reduced-motion: no-preference){
@@ -668,8 +746,20 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
 }
 .closing-intro{ color: var(--ink-dim); max-width: 46ch; margin-bottom: 28px; }
 .closing .btn{ font-size: 1.125rem; padding: 18px 28px; }
-.closing-stamp{ display:inline-block; margin-bottom: 26px; }
-.closing-stamp .stamp{ font-size: 1.125rem; padding: 10px 22px; border-width: 2.5px; letter-spacing: 0.12em; }
+.closing-stamp{ display:block; width: fit-content; margin-bottom: 26px; }
+.round-stamp{
+  position: relative; display:flex; align-items:center; justify-content:center;
+  width: 168px; height: 168px; border-radius: 50%;
+  border: 3px solid var(--brown); color: var(--brown);
+  font-family: var(--mono); text-align:center;
+}
+.round-stamp-ring{
+  position:absolute; inset: 7px; border-radius: 50%;
+  border: 1px dashed var(--brown);
+}
+.round-stamp-text{ position:relative; display:flex; flex-direction:column; gap: 4px; }
+.round-stamp-status{ font-size: 10px; letter-spacing: 0.14em; }
+.round-stamp-main{ font-size: 15px; font-weight: 700; letter-spacing: 0.12em; }
 .closing-fields{ display:grid; gap: 14px; }
 .closing-fields dd{ margin: 0; }
 

@@ -248,10 +248,35 @@ export const homeChapters = {
   indexLabel: 'Capítulos del inicio',
   chapters: [
     { id: 'cap-i', numero: '§ I', label: 'Quién soy' },
-    { id: 'cap-ii', numero: '§ II', label: 'Qué construyo' },
-    { id: 'cap-iii', numero: '§ III', label: 'Con qué lo construyo' },
+    { id: 'cap-ii', numero: '§ II', label: 'Sellos' },
+    { id: 'cap-iii', numero: '§ III', label: 'Hecho a mano' },
     { id: 'cap-iv', numero: '§ IV', label: 'Contacto' },
   ],
+  seals: {
+    title: 'Sellados y en regla',
+    subtitle: 'Dónde he trabajado y estudiado, y en qué estoy certificado.',
+    items: [
+      { label: 'CERTIFICADO', title: 'AWS Academy', sub: 'Cloud Foundations', caption: 'Certificación en fundamentos de nube', tone: 'brown', compact: true },
+      { label: 'EGRESO', title: 'UAA', sub: 'DIC 2026', caption: 'Ingeniería en Sistemas Computacionales, Universidad Autónoma de Aguascalientes', tone: 'slate' },
+      { label: 'ACTUAL', title: 'Foresight', sub: 'DESDE MAR 2026', caption: 'Becario en desarrollo de sistemas', tone: 'brown' },
+      { label: 'CONCLUIDO', title: 'Key Depot', sub: 'NOV 2024 – AGO 2025', caption: 'Becario en desarrollo de software', tone: 'slate' },
+    ],
+  },
+  handmade: {
+    title: 'Hecho a mano, y comprobable',
+    subtitle: 'Cosas de este sitio y de mi trabajo que puedes verificar tú mismo, sin adjetivos.',
+    items: [
+      { title: 'Sin plantilla', text: 'Hecho con React y Vite, con tokens de diseño propios en lugar de un tema prediseñado.' },
+      { title: 'Accesible desde el diseño', text: 'Paleta con contraste AA y animaciones que respetan prefers-reduced-motion.' },
+      { title: 'Decisiones por escrito', text: 'GreonTrack tiene su decisión técnica documentada, no solo el código.' },
+      { title: 'Código a la vista', text: 'Cada componente de GreonTrack enlaza a su propio repositorio en GitHub.' },
+    ],
+  },
+  featured: {
+    eyebrow: 'PROYECTO DESTACADO',
+    project: 'Desglose completo del proyecto',
+    demo: 'Demo en vivo',
+  },
   build: {
     repo: 'Repositorio',
     demo: 'Demo en vivo',
@@ -272,6 +297,7 @@ export const homeChapters = {
     allSkills: 'Todas las skills, con nivel y dónde las usé',
   },
   contact: {
+    stamp: { status: 'ESTADO', available: 'DISPONIBLE', year: '2026' },
     cta: 'Ir al formulario de contacto',
   },
 }

@@ -248,10 +248,35 @@ export const homeChapters = {
   indexLabel: 'Home chapters',
   chapters: [
     { id: 'cap-i', numero: '§ I', label: 'Who I am' },
-    { id: 'cap-ii', numero: '§ II', label: 'What I build' },
-    { id: 'cap-iii', numero: '§ III', label: 'What I build it with' },
+    { id: 'cap-ii', numero: '§ II', label: 'Stamps' },
+    { id: 'cap-iii', numero: '§ III', label: 'Handmade' },
     { id: 'cap-iv', numero: '§ IV', label: 'Contact' },
   ],
+  seals: {
+    title: 'Stamped and on record',
+    subtitle: 'Where I have worked and studied, and what I am certified in.',
+    items: [
+      { label: 'CERTIFIED', title: 'AWS Academy', sub: 'Cloud Foundations', caption: 'Cloud fundamentals certification', tone: 'brown', compact: true },
+      { label: 'GRADUATING', title: 'UAA', sub: 'DEC 2026', caption: 'B.S. in Computer Systems Engineering, Universidad Autónoma de Aguascalientes', tone: 'slate' },
+      { label: 'CURRENT', title: 'Foresight', sub: 'SINCE MAR 2026', caption: 'Systems development intern', tone: 'brown' },
+      { label: 'COMPLETED', title: 'Key Depot', sub: 'NOV 2024 – AUG 2025', caption: 'Software development intern', tone: 'slate' },
+    ],
+  },
+  handmade: {
+    title: 'Handmade, and checkable',
+    subtitle: 'Things about this site and my work that you can verify yourself, no adjectives.',
+    items: [
+      { title: 'No template', text: 'Built with React and Vite, with its own design tokens instead of a prebuilt theme.' },
+      { title: 'Accessible by design', text: 'AA-contrast palette and animations that respect prefers-reduced-motion.' },
+      { title: 'Decisions in writing', text: 'GreonTrack has its technical decision documented, not just the code.' },
+      { title: 'Code in the open', text: 'Every GreonTrack component links to its own GitHub repository.' },
+    ],
+  },
+  featured: {
+    eyebrow: 'FEATURED PROJECT',
+    project: 'Full project breakdown',
+    demo: 'Live demo',
+  },
   build: {
     repo: 'Repository',
     demo: 'Live demo',
@@ -272,6 +297,7 @@ export const homeChapters = {
     allSkills: 'All skills, with level and where I used them',
   },
   contact: {
+    stamp: { status: 'STATUS', available: 'AVAILABLE', year: '2026' },
     cta: 'Go to the contact form',
   },
 }

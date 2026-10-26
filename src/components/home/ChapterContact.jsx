@@ -31,11 +31,18 @@ export default function ChapterContact({ chapter }) {
             <motion.p
               className="closing-stamp"
               initial={shouldReduceMotion ? false : { opacity: 0, scale: 1.6, rotate: -14 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: -6 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: -8 }}
               viewport={revealViewport}
               transition={{ opacity: { duration: 0.12 }, scale: stampSpring, rotate: stampSpring }}
             >
-              <span className="stamp active">{t.contact.available}</span>
+              <span className="round-stamp">
+                <span className="round-stamp-ring" aria-hidden="true" />
+                <span className="round-stamp-text">
+                  <span className="round-stamp-status">{homeChapters.contact.stamp.status}</span>
+                  <span className="round-stamp-main">{homeChapters.contact.stamp.available}</span>
+                  <span className="round-stamp-status">{homeChapters.contact.stamp.year}</span>
+                </span>
+              </span>
             </motion.p>
             <dl className="closing-fields">
               {contactFields.map((f) => (
