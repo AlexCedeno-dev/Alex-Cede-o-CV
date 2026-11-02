@@ -259,7 +259,7 @@ export const homeChapters = {
       { label: 'CERTIFIED', title: 'AWS Academy', sub: 'Cloud Foundations', caption: 'Cloud fundamentals certification', tone: 'brown', compact: true },
       { label: 'GRADUATING', title: 'UAA', sub: 'DEC 2026', caption: 'B.S. in Computer Systems Engineering, Universidad Autónoma de Aguascalientes', tone: 'slate' },
       { label: 'CURRENT', title: 'Foresight', sub: 'SINCE MAR 2026', caption: 'Systems development intern', tone: 'brown' },
-      { label: 'COMPLETED', title: 'Key Depot', sub: 'NOV 2024 – AUG 2025', caption: 'Software development intern', tone: 'slate' },
+      { label: 'COMPLETED', title: 'Key Depot', sub: 'NOV 2024 – AUG 2025', caption: 'Software development intern', tone: 'slate', compact: true },
     ],
   },
   handmade: {

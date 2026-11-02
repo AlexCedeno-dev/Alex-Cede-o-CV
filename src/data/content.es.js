@@ -259,7 +259,7 @@ export const homeChapters = {
       { label: 'CERTIFICADO', title: 'AWS Academy', sub: 'Cloud Foundations', caption: 'Certificación en fundamentos de nube', tone: 'brown', compact: true },
       { label: 'EGRESO', title: 'UAA', sub: 'DIC 2026', caption: 'Ingeniería en Sistemas Computacionales, Universidad Autónoma de Aguascalientes', tone: 'slate' },
       { label: 'ACTUAL', title: 'Foresight', sub: 'DESDE MAR 2026', caption: 'Becario en desarrollo de sistemas', tone: 'brown' },
-      { label: 'CONCLUIDO', title: 'Key Depot', sub: 'NOV 2024 – AGO 2025', caption: 'Becario en desarrollo de software', tone: 'slate' },
+      { label: 'CONCLUIDO', title: 'Key Depot', sub: 'NOV 2024 – AGO 2025', caption: 'Becario en desarrollo de software', tone: 'slate', compact: true },
     ],
   },
   handmade: {
