@@ -5,12 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Edgar Alejandro Cedeño Suárez | Full-Stack Developer</title>
 <meta name="description" content="Portfolio and virtual CV of Edgar Alejandro Cedeño Suárez, Computer Systems Engineering student.">
+<script>
+// Aplica los ajustes guardados antes del primer pintado (evita parpadeo de tema).
+// Sin preferencia guardada: tema claro. Mantener en sync con AccessibilityContext.jsx.
+(function () {
+  var d = document.documentElement, s = {};
+  try { s = JSON.parse(localStorage.getItem('site-a11y')) || {}; } catch (e) {}
+  d.setAttribute('data-theme', ['light', 'dark', 'system'].indexOf(s.theme) > -1 ? s.theme : 'light');
+  d.setAttribute('data-font-size', ['normal', 'lg', 'xl'].indexOf(s.fontSize) > -1 ? s.fontSize : 'normal');
+  d.setAttribute('data-contrast', s.contrast ? 'high' : 'normal');
+  d.setAttribute('data-underline-links', String(!!s.underline));
+})();
+</script>
 <link rel="icon" href="/Alex-Cede-o-CV/favicon.ico" sizes="any">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600&family=Fragment+Mono&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/Alex-Cede-o-CV/assets/index-B7peP1AA.js"></script>
-  <link rel="stylesheet" crossorigin href="/Alex-Cede-o-CV/assets/index-BCOEu00I.css">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..800;1,8..60,400..700&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/Alex-Cede-o-CV/assets/index-BS8fT8ia.js"></script>
+  <link rel="stylesheet" crossorigin href="/Alex-Cede-o-CV/assets/index-DEwUM0Qe.css">
 </head>
 <body>
 <div id="root"></div>
