@@ -26,7 +26,7 @@ export default function ComponentCard({ component, detail }) {
           <li key={name}>{name}</li>
         ))}
       </ul>
-      <a className="pj-repo" href={component.repo} target="_blank" rel="noopener">
+      <a className="pj-repo fx-link" href={component.repo} target="_blank" rel="noopener">
         <span className="sr-only">{component.name}: </span>
         {t.projectsPage.repo}
       </a>

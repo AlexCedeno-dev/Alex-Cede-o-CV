@@ -48,7 +48,7 @@ export default function CvCredentials({ numero, idsKey, headingKey, anchor }) {
               )}
               {item.link && (
                 <a
-                  className="link cv-card-link"
+                  className="link cv-card-link fx-link"
                   href={item.link.href}
                   target="_blank"
                   rel="noopener noreferrer"

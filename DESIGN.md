@@ -28,9 +28,14 @@ All text-color/background pairs were checked against WCAG AA (4.5:1 body, 3:1 la
 
 ## Type
 
-- Display: **Archivo** (600/700/800): headings, buttons, job roles, card titles.
-- Body: **Inter** (400/500/600): paragraphs, nav, most labels.
-- Mono: **Fragment Mono** (400 only, no bound weight), reserved for actual data: dates, the ledger field values, skill/tool inventory tags, phone number. Not used as a "technical" costume on chrome like nav or buttons.
+- Single typeface: **Source Serif 4** for everything (headings, body, nav, buttons, dates, ledger values, tags). Hierarchy comes from weight and size, not from a second or third family.
+
+## Motion
+
+- One motion language, taken from the Hero buttons: on hover or keyboard focus the element rises (`-1px, -2px`) and casts a hard offset shadow (`3px 4px`) with `cubic-bezier(0.23, 1, 0.32, 1)` (220ms in, 140ms out); on press it sinks to `scale(0.97)` (100ms).
+- Cards (`.card-fx`) use the same curve and timings at half intensity (`--fx-card-k: 0.5`), plus an accent top rule drawn with `scaleX` and a 1.5° turn of the seal. Text links (`.fx-link`) rise at half intensity without shadow; segmented controls (`.fx-flat`) only change color and press.
+- Source of truth: `fx` in `src/motion.js` (used by `Button.jsx`, published as `--fx-*` CSS variables). Only `transform`/`opacity` are animated.
+- Hover applies only with a fine pointer; keyboard focus (`:focus-visible` / `:focus-within`) gets the same treatment. With `prefers-reduced-motion` there is no movement or scale, only an instant border/background color change.
 
 ## Motifs
 

@@ -658,9 +658,7 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
 .featured-btn{
   display:inline-block; padding: 12px 20px; border-radius: var(--radius);
   font-weight: 600; font-size: 0.9375rem; border: 1.5px solid transparent;
-  transition: transform .18s cubic-bezier(0.23, 1, 0.32, 1), background-color .18s ease;
 }
-.featured-btn:active{ transform: scale(0.97); }
 .featured-btn-main{ background: var(--fp-fg); color: #211D16; }
 .featured-btn-ghost{ border-color: var(--fp-sky); color: var(--fp-sky); }
 .featured-btn-ghost:hover{ background: rgba(164,204,212,0.14); }
@@ -1448,8 +1446,7 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
 .cv-pdf-missing{ font-size: 0.875rem; }
 .cv-pdf-actions{ display:flex; flex-wrap:wrap; gap: 14px; }
 button.btn.ghost{
-  background: transparent; color: var(--ink); cursor: pointer;
-  transition: border-color .2s ease, background-color .2s ease;
+  background: transparent; color: var(--ink);
 }
 button.btn.ghost:hover{ border-color: var(--ink); background: color-mix(in srgb, var(--ink) 4%, transparent); }
 
@@ -1479,36 +1476,76 @@ button.btn.ghost:hover{ border-color: var(--ink); background: color-mix(in srgb,
 .cv-pdf-fallback{ margin: auto; padding: 28px; display:flex; flex-direction:column; gap: 20px; align-items:flex-start; max-width: 46ch; }
 @media (max-width: 640px){ .cv-modal-backdrop{ padding: 8px; } .cv-modal{ height: 92vh; } }
 
-/* ---------- cards: hover / foco (clase compartida .card-fx) ----------
-   Solo transform/opacity (translate, scaleX, rotate) y color de borde. El filete
-   superior se dibuja con scaleX; el sello gira 1.5° extra con un resorte suave
-   (cubic-bezier con rebote corto). Nada depende del hover: es solo refuerzo. */
-.card-fx{
+/* ---------- lenguaje de movimiento compartido (botones del Hero) ----------
+   Fuente: `fx` en src/motion.js, publicado como --fx-* en :root (applyFxTokens).
+   .fx       botón: sube (translate), proyecta sombra dura (::after, opacity+translate)
+             y se hunde al pulsar (scale).
+   .fx-flat  variante sin elevación (segmentos contiguos): solo color + pulsación.
+   .fx-link  enlace de texto: mismo desplazamiento a media intensidad, sin sombra.
+   .card-fx  card: lo mismo × --fx-card-k (0.5), más filete scaleX y giro del sello.
+   Solo transform/opacity (translate, scale, rotate, scaleX) y color. --fx-on (0/1)
+   enciende el estado; hover solo con puntero fino, foco con teclado siempre. */
+:where(.fx, .fx-link, .card-fx){
   position: relative;
-  transition: translate .25s cubic-bezier(0.23, 1, 0.32, 1), border-color .2s ease;
+  --fx-k: 1; --fx-on: 0; --fx-d: var(--fx-exit);
 }
+.fx-link{ --fx-k: 0.5; }
+.card-fx{ --fx-k: var(--fx-card-k); }
+.fx-flat{ --fx-k: 0; }
+
+.fx, .fx-link, .card-fx{
+  translate: calc(var(--fx-lift-x) * var(--fx-k) * var(--fx-on)) calc(var(--fx-lift-y) * var(--fx-k) * var(--fx-on));
+  transition:
+    translate var(--fx-d) var(--fx-ease),
+    scale var(--fx-tap-dur) var(--fx-ease),
+    border-color var(--fx-d) ease-out,
+    background-color var(--fx-d) ease-out,
+    color var(--fx-d) ease-out;
+}
+.fx{ cursor: pointer; }
+.fx:disabled{ cursor: default; }
+
+/* sombra dura: caja transparente con box-shadow (solo se dibuja fuera del borde) */
+.fx::after, .card-fx::after{
+  content: ""; position: absolute; inset: -1px;
+  border-radius: inherit; pointer-events: none;
+  box-shadow:
+    calc(var(--fx-shadow-x) * var(--fx-k))
+    calc(var(--fx-shadow-y) * var(--fx-k))
+    0 var(--shadow-btn);
+  opacity: var(--fx-on);
+  translate: calc(var(--fx-shadow-x) * var(--fx-k) * (var(--fx-on) - 1)) calc(var(--fx-shadow-y) * var(--fx-k) * (var(--fx-on) - 1));
+  transition: opacity var(--fx-d) var(--fx-ease), translate var(--fx-d) var(--fx-ease);
+}
+.fx-flat::after{ display: none; }
+
+/* filete superior y sello de las cards */
 .card-fx::before{
   content: ""; position: absolute; top: -1.5px; left: -1.5px; right: -1.5px; height: 2px;
   background: var(--accent);
   border-top-left-radius: inherit; border-top-right-radius: inherit;
-  transform: scaleX(0); transform-origin: left center;
+  transform: scaleX(var(--fx-on)); transform-origin: left center;
   transition: transform .4s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
 }
-.card-fx .seal{ transition: rotate .45s cubic-bezier(0.34, 1.56, 0.64, 1); }
-@media (hover: hover){
-  .card-fx:hover{ translate: 0 -2px; border-color: var(--accent); }
-  .card-fx:hover::before{ transform: scaleX(1); }
-  .card-fx:hover .seal{ rotate: 1.5deg; }
+.card-fx .seal{
+  rotate: calc(1.5deg * var(--fx-on));
+  transition: rotate .45s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.card-fx:focus-within{ translate: 0 -2px; border-color: var(--accent); }
-.card-fx:focus-within::before{ transform: scaleX(1); }
-.card-fx:focus-within .seal{ rotate: 1.5deg; }
+
+/* estados: hover (solo puntero fino) y foco de teclado; mismo tratamiento */
+@media (hover: hover) and (pointer: fine){
+  .fx:hover:not(:disabled), .fx-link:hover{ --fx-on: 1; --fx-d: var(--fx-enter); }
+  .card-fx:hover{ --fx-on: 1; --fx-d: var(--fx-enter); border-color: var(--accent); }
+}
+.fx:focus-visible:not(:disabled), .fx-link:focus-visible{ --fx-on: 1; --fx-d: var(--fx-enter); }
+.card-fx:focus-within{ --fx-on: 1; --fx-d: var(--fx-enter); border-color: var(--accent); }
+.fx:active:not(:disabled), .fx-link:active{ scale: var(--fx-tap); }
+
 @media (prefers-reduced-motion: reduce){
-  .card-fx{ transition: border-color .01s linear; }
-  .card-fx::before{ transition: none; }
-  .card-fx .seal{ transition: none; }
-  .card-fx:hover, .card-fx:focus-within{ translate: none; }
-  .card-fx:hover::before, .card-fx:focus-within::before{ transform: scaleX(0); }
-  .card-fx:hover .seal, .card-fx:focus-within .seal{ rotate: 0deg; }
+  .fx, .fx-link, .card-fx{ translate: none; transition: border-color .01s linear, background-color .01s linear, color .01s linear; }
+  .fx:active:not(:disabled), .fx-link:active{ scale: none; }
+  .fx::after, .card-fx::after{ display: none; }
+  .card-fx::before{ transform: scaleX(0); transition: none; }
+  .card-fx .seal{ rotate: none; transition: none; }
 }

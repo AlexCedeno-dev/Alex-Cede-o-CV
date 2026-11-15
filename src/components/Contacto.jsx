@@ -71,7 +71,7 @@ function ContactForm() {
         <label htmlFor="_gotcha">No llenar este campo</label>
         <input id="_gotcha" name="_gotcha" type="text" tabIndex={-1} autoComplete="off" />
       </div>
-      <button className="form-submit" type="submit" disabled={status === 'sending'}>
+      <button className="form-submit fx" type="submit" disabled={status === 'sending'}>
         {status === 'sending' ? t.contact.sending : t.contact.send}
       </button>
       {status === 'error' && (

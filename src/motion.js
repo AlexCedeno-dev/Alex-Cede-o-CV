@@ -38,6 +38,37 @@ export const revealVariants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: revealEase } },
 }
 
+// Lenguaje de movimiento de los botones del Hero, fuente única para todo el sitio.
+// Button.jsx lo usa con Framer Motion; el CSS (.fx, .card-fx, .fx-link) lo lee de las
+// variables --fx-* que applyFxTokens() publica en :root (ver main.jsx).
+// Botón: sube (lift) y proyecta una sombra dura (shadow) en `enter`, vuelve en `exit`;
+// al pulsar se hunde a `tapScale`. Las cards usan los mismos valores × cardScale.
+export const fx = {
+  ease: easeOutStrong,
+  enter: 0.22,
+  exit: 0.14,
+  lift: { x: -1, y: -2 },
+  shadow: { x: 3, y: 4 },
+  tapScale: 0.97,
+  tapDuration: 0.1,
+  ghost: { enter: 0.2, exit: 0.14 },
+  cardScale: 0.5,
+}
+
+export function applyFxTokens(root = document.documentElement) {
+  const s = root.style
+  s.setProperty('--fx-ease', `cubic-bezier(${fx.ease.join(', ')})`)
+  s.setProperty('--fx-enter', `${fx.enter}s`)
+  s.setProperty('--fx-exit', `${fx.exit}s`)
+  s.setProperty('--fx-lift-x', `${fx.lift.x}px`)
+  s.setProperty('--fx-lift-y', `${fx.lift.y}px`)
+  s.setProperty('--fx-shadow-x', `${fx.shadow.x}px`)
+  s.setProperty('--fx-shadow-y', `${fx.shadow.y}px`)
+  s.setProperty('--fx-tap', `${fx.tapScale}`)
+  s.setProperty('--fx-tap-dur', `${fx.tapDuration}s`)
+  s.setProperty('--fx-card-k', `${fx.cardScale}`)
+}
+
 // Tokens de color de index.css. Framer Motion 13 resuelve var(--token) al
 // animar, así que siguen el tema claro/oscuro sin duplicar valores.
 export const colors = {

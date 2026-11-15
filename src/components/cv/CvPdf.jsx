@@ -118,7 +118,7 @@ function PreviewModal({ href, pdf, canEmbed, onClose }) {
       >
         <div className="cv-modal-bar">
           <span className="folio">{pdf.dialogLabel}</span>
-          <button ref={closeRef} type="button" className="cv-modal-close" onClick={onClose}>
+          <button ref={closeRef} type="button" className="cv-modal-close fx" onClick={onClose}>
             {pdf.close} <span aria-hidden="true">✕</span>
           </button>
         </div>
@@ -163,7 +163,7 @@ export default function CvPdf() {
               <p className="cv-text">{pdf.intro}</p>
               <div className="cv-pdf-actions">
                 <Button variant="primary" href={href} download>{pdf.download} <span aria-hidden="true">↓</span></Button>
-                <button type="button" className="btn ghost" onClick={() => setOpen(true)} aria-haspopup="dialog">
+                <button type="button" className="btn ghost fx" onClick={() => setOpen(true)} aria-haspopup="dialog">
                   {pdf.preview}
                 </button>
               </div>

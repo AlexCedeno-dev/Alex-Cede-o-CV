@@ -5,6 +5,9 @@ import './index.css'
 import App from './App.jsx'
 import { LanguageProvider } from './i18n/LanguageContext'
 import { AccessibilityProvider } from './a11y/AccessibilityContext'
+import { applyFxTokens } from './motion'
+
+applyFxTokens()
 
 // HashRouter (URLs con #/ruta) a propósito: GitHub Pages sirve archivos
 // estáticos sin reescritura de rutas del lado del servidor, así que un
