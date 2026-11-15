@@ -57,6 +57,23 @@ export const educationCards = [
     status: { type: 'verified', label: 'obtenida' },
     link: { href: 'https://www.credly.com/go/Zj2c779G', label: 'Ver credencial ↗' },
   },
+  {
+    id: 'FORM-003',
+    title: 'Scrum Fundamentals Certified (SFC)',
+    org: 'SCRUMstudy, Accreditation Body for Scrum and Agile',
+    period: '6 nov 2026',
+    date: '2026-11-06',
+    status: { type: 'verified', label: 'obtenida' },
+    facts: [
+      { label: 'ID de credencial', value: '1206174', mono: true },
+      { label: 'Vigencia', value: 'Sin fecha de expiración' },
+    ],
+    link: {
+      href: 'https://c46e136a583f7e334124-ac22991740ab4ff17e21daf2ed577041.ssl.cf1.rackcdn.com/Certificate/ScrumFundamentalsCertified-EDGARALEJANDROCEDE%C3%91OSU%C3%81REZ-1206174-20261106.pdf',
+      label: 'Ver certificado ↗',
+      ariaLabel: 'Ver certificado Scrum Fundamentals Certified en PDF (se abre en una pestaña nueva)',
+    },
+  },
 ]
 
 export const skillGroups = [
@@ -255,11 +272,17 @@ export const homeChapters = {
   seals: {
     title: 'Sellados y en regla',
     subtitle: 'Dónde he trabajado y estudiado, y en qué estoy certificado.',
+    groups: {
+      formacion: 'Formación',
+      certificaciones: 'Certificaciones',
+      experiencia: 'Experiencia',
+    },
     items: [
-      { label: 'CERTIFICADO', title: 'AWS Academy', sub: 'Cloud Foundations', caption: 'Certificación en fundamentos de nube', tone: 'brown', compact: true },
-      { label: 'EGRESO', title: 'UAA', sub: 'DIC 2026', caption: 'Ingeniería en Sistemas Computacionales, Universidad Autónoma de Aguascalientes', tone: 'slate' },
-      { label: 'ACTUAL', title: 'Foresight', sub: 'DESDE MAR 2026', caption: 'Becario en desarrollo de sistemas', tone: 'brown' },
-      { label: 'CONCLUIDO', title: 'Key Depot', sub: 'NOV 2024 – AGO 2025', caption: 'Becario en desarrollo de software', tone: 'slate', compact: true },
+      { group: 'formacion', label: 'EGRESO', title: 'UAA', sub: 'DIC 2026', org: 'Universidad Autónoma de Aguascalientes (UAA)', caption: 'Ingeniería en Sistemas Computacionales', description: 'Egreso previsto en diciembre de 2026.', tone: 'slate' },
+      { group: 'certificaciones', label: 'CERTIFICADO', title: 'AWS Academy', sub: 'Cloud Foundations', org: 'AWS Academy', caption: 'Cloud Foundations', description: 'Acredita los fundamentos de la nube de AWS.', tone: 'brown', compact: true },
+      { group: 'certificaciones', label: 'N.º 1206174', title: 'SFC', sub: '06 NOV 2026', org: 'SCRUMstudy', caption: 'Scrum Fundamentals Certified (SFC)', description: 'Acredita los fundamentos del marco Scrum.', tone: 'slate', arc: { top: 'SCRUM FUNDAMENTALS', bottom: 'CERTIFIED' } },
+      { group: 'experiencia', label: 'ACTUAL', title: 'Foresight', sub: 'DESDE MAR 2026', org: 'Foresight', caption: 'Becario en desarrollo de sistemas', description: 'Interfaces con React, apps móviles con React Native y agentes en Node.js con APIs REST sobre MySQL.', tone: 'brown' },
+      { group: 'experiencia', label: 'CONCLUIDO', title: 'Key Depot', sub: 'NOV 2024 – AGO 2025', org: 'Key Depot', caption: 'Becario en desarrollo de software', description: 'Desarrollo con Angular, WordPress y PHP.', tone: 'slate', compact: true },
     ],
   },
   handmade: {
@@ -299,5 +322,54 @@ export const homeChapters = {
   contact: {
     stamp: { status: 'ESTADO', available: 'DISPONIBLE', year: '2026' },
     cta: 'Ir al formulario de contacto',
+  },
+}
+
+// Página /cv rediseñada. Solo campos nuevos; el resto del contenido vive arriba.
+// Para sumar una certificación: agrega el objeto a educationCards, su id a
+// certificationIds y (opcional) su sello en seals. No hace falta tocar componentes.
+export const cvPage = {
+  rev: '2026-09-17',
+  // BORRADOR para revisión de Edgar: redactada solo con datos ya presentes en
+  // aboutParagraphs, jobs, educationCards y t.contact.intro. Sin logros ni métricas nuevas.
+  letter: {
+    heading: 'Carta de presentación',
+    paragraphs: [
+      'Soy estudiante de Ingeniería en Sistemas Computacionales en la Universidad Autónoma de Aguascalientes y espero egresar en diciembre de 2026.',
+      'Actualmente soy becario de desarrollo de sistemas en Foresight, donde creo interfaces con React y aplicaciones móviles con React Native, además de agentes en Node.js y APIs REST conectadas a MySQL. Antes, en Key Depot, trabajé con Angular, WordPress y PHP.',
+      'Me interesa construir soluciones funcionales y ordenadas, pensadas para las necesidades reales de quien las usa. Estoy disponible para prácticas, proyectos freelance y oportunidades de tiempo completo.',
+    ],
+    signature: 'Alex Cedeño',
+  },
+  sections: {
+    experience: 'Trayectoria profesional',
+    education: 'Formación',
+    certifications: 'Certificaciones',
+    skills: 'Habilidades',
+    document: 'CV en PDF',
+  },
+  educationIds: ['FORM-001'],
+  certificationIds: ['FORM-002', 'FORM-003'],
+  // Sello por id de experiencia o formación.
+  seals: {
+    'EXP-001': { label: 'ACTUAL', title: 'Foresight', sub: 'DESDE MAR 2026', tone: 'brown' },
+    'EXP-002': { label: 'CONCLUIDO', title: 'Key Depot', sub: 'NOV 2024 – AGO 2025', tone: 'slate', compact: true },
+    'FORM-001': { label: 'EGRESO', title: 'UAA', sub: 'DIC 2026', tone: 'slate' },
+    'FORM-002': { label: 'CERTIFICADO', title: 'AWS Academy', sub: 'MAYO 2026', tone: 'brown', compact: true },
+    'FORM-003': { label: 'CERTIFICADO', title: 'SFC', sub: 'NOV 2026', tone: 'slate' },
+  },
+  periods: { 'FORM-001': 'Graduación dic 2026' },
+  skillsLine: 'El stack completo, con nivel y dónde lo usé, está en su propia página.',
+  skillsCta: 'Ver skills',
+  pdf: {
+    file: 'Edgar-Cedeno-CV-ES.pdf',
+    intro: 'Versión en PDF del currículum, para leer aquí o llevártela.',
+    download: 'Descargar CV',
+    preview: 'Ver vista previa',
+    openNewTab: 'Abrir en pestaña nueva',
+    close: 'Cerrar vista previa',
+    dialogLabel: 'Vista previa del CV en PDF',
+    mobileNote: 'Tu navegador no muestra PDFs incrustados. Ábrelo en una pestaña nueva o descárgalo.',
+    missing: 'El PDF del CV no está disponible por ahora.',
   },
 }

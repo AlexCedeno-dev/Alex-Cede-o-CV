@@ -25,7 +25,8 @@ Cualquier otra ruta redirige a `/`.
 - CSS puro (variables CSS, grid, flexbox, sin preprocesadores ni Tailwind)
 - Contenido bilingüe (ES/EN) y panel de accesibilidad, ambos con contexto de React
 - Formulario de contacto conectado a [Formspree](https://formspree.io/)
-- Tipografías: [Fraunces](https://fonts.google.com/specimen/Fraunces) (títulos), [Inter](https://fonts.google.com/specimen/Inter) (cuerpo) y [Fragment Mono](https://fonts.google.com/specimen/Fragment+Mono) (datos/referencias) vía Google Fonts
+- Tipografía: [Source Serif 4](https://fonts.google.com/specimen/Source+Serif+4) como única familia, vía Google Fonts
+- Movimiento: botones y cards comparten un mismo lenguaje (elevación corta, sombra dura, hundimiento al pulsar; las cards a media intensidad), definido en `fx` de `src/motion.js` y publicado como variables CSS `--fx-*`
 
 ## Estructura
 

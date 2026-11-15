@@ -1,21 +1,21 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { colors, easeOutStrong } from '../motion'
+import { colors, fx } from '../motion'
 
-// Salida rápida (140ms), entrada un poco más deliberada (220ms), aplicada
-// a los botones del hero y contacto.
+// Salida rápida, entrada un poco más deliberada. Los valores viven en `fx`
+// (motion.js), la misma fuente que usa el CSS de cards y demás botones.
 const primaryVariants = {
   rest: {
     x: 0,
     y: 0,
     boxShadow: `0 0 0 ${colors.shadowClear}`,
-    transition: { duration: 0.14, ease: easeOutStrong },
+    transition: { duration: fx.exit, ease: fx.ease },
   },
   hover: {
-    x: -1,
-    y: -2,
-    boxShadow: `3px 4px 0 ${colors.shadow}`,
-    transition: { duration: 0.22, ease: easeOutStrong },
+    x: fx.lift.x,
+    y: fx.lift.y,
+    boxShadow: `${fx.shadow.x}px ${fx.shadow.y}px 0 ${colors.shadow}`,
+    transition: { duration: fx.enter, ease: fx.ease },
   },
 }
 
@@ -23,12 +23,12 @@ const ghostVariants = {
   rest: {
     borderColor: colors.border,
     backgroundColor: colors.shadowClear,
-    transition: { duration: 0.14, ease: 'easeOut' },
+    transition: { duration: fx.ghost.exit, ease: 'easeOut' },
   },
   hover: {
     borderColor: colors.ink,
     backgroundColor: colors.hoverWash,
-    transition: { duration: 0.2, ease: 'easeOut' },
+    transition: { duration: fx.ghost.enter, ease: 'easeOut' },
   },
 }
 
@@ -45,7 +45,7 @@ export default function Button({ variant = 'ghost', href, to, state, children, e
     initial: 'rest',
     animate: 'rest',
     whileHover: 'hover',
-    whileTap: { scale: 0.97, transition: { duration: 0.1, ease: easeOutStrong } },
+    whileTap: { scale: fx.tapScale, transition: { duration: fx.tapDuration, ease: fx.ease } },
   }
 
   if (to) {

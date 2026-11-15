@@ -16,10 +16,10 @@ export default function FeaturedProject() {
           <h2 className="featured-name" id="featured-title">{project.title}</h2>
           <p className="featured-tagline">{project.tagline}</p>
           <p className="featured-links">
-            <Link to="/proyectos" className="featured-btn featured-btn-main">
+            <Link to="/proyectos" className="featured-btn featured-btn-main fx">
               {labels.project} <span aria-hidden="true">→</span>
             </Link>
-            <a href={project.demoHref} target="_blank" rel="noopener" className="featured-btn featured-btn-ghost">
+            <a href={project.demoHref} target="_blank" rel="noopener" className="featured-btn featured-btn-ghost fx">
               {labels.demo} <span aria-hidden="true">↗</span>
             </a>
           </p>

@@ -10,10 +10,10 @@ export default function Hobbies() {
   return (
     <section id="hobbies">
       <div className="wrap">
-        <SectionHeading numero="§ V">{t.hobbies.heading}</SectionHeading>
+        <SectionHeading numero="§ VII">{t.hobbies.heading}</SectionHeading>
         <Reveal className="hobby-grid">
           {hobbies.map((hobby, i) => (
-            <div className="hobby-card" key={hobby.code}>
+            <div className="hobby-card card-fx" key={hobby.code}>
               <span className="folio hobby-number">{String(i + 1).padStart(2, '0')}</span>
               <h4>{hobby.title}</h4>
               <p>{hobby.text}</p>

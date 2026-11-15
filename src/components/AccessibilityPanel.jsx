@@ -2,6 +2,18 @@ import { useEffect, useId, useRef, useState } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useAccessibility } from '../a11y/AccessibilityContext'
 
+const HINT_KEY = 'site-a11y-hint'
+const HINT_DELAY = 1800
+const HINT_DURATION = 8000
+
+function hintSeen() {
+  try {
+    return localStorage.getItem(HINT_KEY) === '1'
+  } catch {
+    return true // sin localStorage no podemos recordarlo: mejor no mostrarlo nunca
+  }
+}
+
 const FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
 
 export default function AccessibilityPanel() {
@@ -11,6 +23,26 @@ export default function AccessibilityPanel() {
   const triggerRef = useRef(null)
   const dialogRef = useRef(null)
   const titleId = useId()
+  const [hintVisible, setHintVisible] = useState(false)
+
+  // Aviso único: aparece poco después de cargar, se cierra solo y no vuelve a salir.
+  useEffect(() => {
+    if (hintSeen()) return
+    let hideTimer
+    const showTimer = setTimeout(() => {
+      try {
+        localStorage.setItem(HINT_KEY, '1')
+      } catch {
+        return
+      }
+      setHintVisible(true)
+      hideTimer = setTimeout(() => setHintVisible(false), HINT_DURATION)
+    }, HINT_DELAY)
+    return () => {
+      clearTimeout(showTimer)
+      clearTimeout(hideTimer)
+    }
+  }, [])
 
   useEffect(() => {
     if (!open) return
@@ -49,11 +81,14 @@ export default function AccessibilityPanel() {
       <button
         ref={triggerRef}
         type="button"
-        className="a11y-trigger"
+        className="a11y-trigger fx"
         aria-label={t.a11y.openPanel}
         aria-haspopup="dialog"
         aria-expanded={open}
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          setHintVisible(false)
+          setOpen(true)
+        }}
       >
         <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
           <circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
@@ -68,6 +103,17 @@ export default function AccessibilityPanel() {
         </svg>
       </button>
 
+      <div className="a11y-hint-region" role="status" aria-live="polite">
+        {hintVisible && !open && (
+          <div className="a11y-hint">
+            <p>{t.a11y.hint}</p>
+            <button type="button" className="a11y-hint-close" onClick={() => setHintVisible(false)} aria-label={t.a11y.hintClose}>
+              ✕
+            </button>
+          </div>
+        )}
+      </div>
+
       {open && (
         <div className="a11y-backdrop" onClick={close}>
           <div
@@ -80,7 +126,7 @@ export default function AccessibilityPanel() {
           >
             <div className="a11y-dialog-head">
               <h2 id={titleId}>{t.a11y.title}</h2>
-              <button type="button" className="a11y-close" onClick={close} aria-label={t.a11y.close}>
+              <button type="button" className="a11y-close fx" onClick={close} aria-label={t.a11y.close}>
                 ✕
               </button>
             </div>
@@ -88,10 +134,10 @@ export default function AccessibilityPanel() {
             <div className="a11y-group">
               <p className="a11y-group-label">{t.a11y.language}</p>
               <div className="a11y-btn-row" role="group" aria-label={t.a11y.language}>
-                <button type="button" className="a11y-option" aria-pressed={lang === 'en'} onClick={() => setLang('en')}>
+                <button type="button" className="a11y-option fx fx-flat" aria-pressed={lang === 'en'} onClick={() => setLang('en')}>
                   {t.a11y.langEn}
                 </button>
-                <button type="button" className="a11y-option" aria-pressed={lang === 'es'} onClick={() => setLang('es')}>
+                <button type="button" className="a11y-option fx fx-flat" aria-pressed={lang === 'es'} onClick={() => setLang('es')}>
                   {t.a11y.langEs}
                 </button>
               </div>
@@ -100,13 +146,13 @@ export default function AccessibilityPanel() {
             <div className="a11y-group">
               <p className="a11y-group-label">{t.a11y.textSize}</p>
               <div className="a11y-btn-row" role="group" aria-label={t.a11y.textSize}>
-                <button type="button" className="a11y-option" onClick={() => a11y.cycleFontSize(-1)} aria-label={t.a11y.decrease}>
+                <button type="button" className="a11y-option fx fx-flat" onClick={() => a11y.cycleFontSize(-1)} aria-label={t.a11y.decrease}>
                   A−
                 </button>
-                <button type="button" className="a11y-option" onClick={a11y.resetFontSize} aria-label={t.a11y.reset}>
+                <button type="button" className="a11y-option fx fx-flat" onClick={a11y.resetFontSize} aria-label={t.a11y.reset}>
                   A
                 </button>
-                <button type="button" className="a11y-option" onClick={() => a11y.cycleFontSize(1)} aria-label={t.a11y.increase}>
+                <button type="button" className="a11y-option fx fx-flat" onClick={() => a11y.cycleFontSize(1)} aria-label={t.a11y.increase}>
                   A+
                 </button>
               </div>
@@ -126,13 +172,13 @@ export default function AccessibilityPanel() {
             <div className="a11y-group">
               <p className="a11y-group-label">{t.a11y.theme}</p>
               <div className="a11y-btn-row" role="group" aria-label={t.a11y.theme}>
-                <button type="button" className="a11y-option" aria-pressed={a11y.theme === 'light'} onClick={() => a11y.setTheme('light')}>
+                <button type="button" className="a11y-option fx fx-flat" aria-pressed={a11y.theme === 'light'} onClick={() => a11y.setTheme('light')}>
                   {t.a11y.themeLight}
                 </button>
-                <button type="button" className="a11y-option" aria-pressed={a11y.theme === 'dark'} onClick={() => a11y.setTheme('dark')}>
+                <button type="button" className="a11y-option fx fx-flat" aria-pressed={a11y.theme === 'dark'} onClick={() => a11y.setTheme('dark')}>
                   {t.a11y.themeDark}
                 </button>
-                <button type="button" className="a11y-option" aria-pressed={a11y.theme === 'system'} onClick={() => a11y.setTheme('system')}>
+                <button type="button" className="a11y-option fx fx-flat" aria-pressed={a11y.theme === 'system'} onClick={() => a11y.setTheme('system')}>
                   {t.a11y.themeSystem}
                 </button>
               </div>

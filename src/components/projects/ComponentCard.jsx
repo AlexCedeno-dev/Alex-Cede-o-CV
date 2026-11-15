@@ -7,7 +7,7 @@ export default function ComponentCard({ component, detail }) {
   const images = detail.images ?? []
 
   return (
-    <article className="pj-card">
+    <article className="pj-card card-fx">
       {images.length > 0 && (
         <div className="pj-card-media">
           {images.map((img) => (
@@ -26,7 +26,7 @@ export default function ComponentCard({ component, detail }) {
           <li key={name}>{name}</li>
         ))}
       </ul>
-      <a className="pj-repo" href={component.repo} target="_blank" rel="noopener">
+      <a className="pj-repo fx-link" href={component.repo} target="_blank" rel="noopener">
         <span className="sr-only">{component.name}: </span>
         {t.projectsPage.repo}
       </a>

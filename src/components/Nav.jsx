@@ -29,7 +29,7 @@ export default function Nav() {
         </NavLink>
         <button
           ref={toggleRef}
-          className="nav-toggle"
+          className="nav-toggle fx"
           type="button"
           aria-label={t.nav.toggle}
           aria-expanded={open}

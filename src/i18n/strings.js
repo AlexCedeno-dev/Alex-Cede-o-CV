@@ -99,6 +99,8 @@ export const strings = {
       themeLight: 'Light',
       themeDark: 'Dark',
       themeSystem: 'System',
+      hint: 'Accessibility options are here: text size, contrast, theme and language.',
+      hintClose: 'Dismiss notice',
     },
     meta: {
       title: 'Edgar Alejandro Cedeño Suárez | Full-Stack Developer',
@@ -205,6 +207,8 @@ export const strings = {
       themeLight: 'Claro',
       themeDark: 'Oscuro',
       themeSystem: 'Sistema',
+      hint: 'Aquí están las opciones de accesibilidad: tamaño de texto, contraste, tema e idioma.',
+      hintClose: 'Cerrar aviso',
     },
     meta: {
       title: 'Edgar Alejandro Cedeño Suárez | Full-Stack Developer',

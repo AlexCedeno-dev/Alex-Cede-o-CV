@@ -11,7 +11,7 @@ export default function ComponentSpecs({ components }) {
       <h3 className="pj-subheading" id="pj-specs-title">{t.projectsPage.componentsHeading}</h3>
       <div className="pj-cards">
         {components.map((component, i) => (
-          <Reveal key={component.name} delay={(i % 2) * 0.06}>
+          <Reveal card key={component.name} delay={(i % 2) * 0.06}>
             <ComponentCard component={component} detail={componentDetails[i]} />
           </Reveal>
         ))}

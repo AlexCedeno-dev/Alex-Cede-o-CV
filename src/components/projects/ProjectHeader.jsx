@@ -15,7 +15,7 @@ export default function ProjectHeader({ project }) {
         <span className="field-label">{t.projectsPage.roleLabel}</span>
         <span className="field-value">{project.role}</span>
       </p>
-      <a className="pj-demo" href={project.demoHref} target="_blank" rel="noopener">
+      <a className="pj-demo fx-link" href={project.demoHref} target="_blank" rel="noopener">
         {t.projectsPage.demoLink} <span aria-hidden="true">↗</span>
       </a>
     </header>
