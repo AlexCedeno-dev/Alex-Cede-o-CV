@@ -57,6 +57,23 @@ export const educationCards = [
     status: { type: 'verified', label: 'earned' },
     link: { href: 'https://www.credly.com/go/Zj2c779G', label: 'View credential ↗' },
   },
+  {
+    id: 'FORM-003',
+    title: 'Scrum Fundamentals Certified (SFC)',
+    org: 'SCRUMstudy, Accreditation Body for Scrum and Agile',
+    period: 'Nov 6, 2026',
+    date: '2026-11-06',
+    status: { type: 'verified', label: 'earned' },
+    facts: [
+      { label: 'Credential ID', value: '1206174', mono: true },
+      { label: 'Validity', value: 'No expiration date' },
+    ],
+    link: {
+      href: 'https://c46e136a583f7e334124-ac22991740ab4ff17e21daf2ed577041.ssl.cf1.rackcdn.com/Certificate/ScrumFundamentalsCertified-EDGARALEJANDROCEDE%C3%91OSU%C3%81REZ-1206174-20261106.pdf',
+      label: 'View certificate ↗',
+      ariaLabel: 'View Scrum Fundamentals Certified certificate as PDF (opens in a new tab)',
+    },
+  },
 ]
 
 export const skillGroups = [
@@ -255,11 +272,17 @@ export const homeChapters = {
   seals: {
     title: 'Stamped and on record',
     subtitle: 'Where I have worked and studied, and what I am certified in.',
+    groups: {
+      formacion: 'Education',
+      certificaciones: 'Certifications',
+      experiencia: 'Experience',
+    },
     items: [
-      { label: 'CERTIFIED', title: 'AWS Academy', sub: 'Cloud Foundations', caption: 'Cloud fundamentals certification', tone: 'brown', compact: true },
-      { label: 'GRADUATING', title: 'UAA', sub: 'DEC 2026', caption: 'B.S. in Computer Systems Engineering, Universidad Autónoma de Aguascalientes', tone: 'slate' },
-      { label: 'CURRENT', title: 'Foresight', sub: 'SINCE MAR 2026', caption: 'Systems development intern', tone: 'brown' },
-      { label: 'COMPLETED', title: 'Key Depot', sub: 'NOV 2024 – AUG 2025', caption: 'Software development intern', tone: 'slate', compact: true },
+      { group: 'formacion', label: 'GRADUATING', title: 'UAA', sub: 'DEC 2026', org: 'Universidad Autónoma de Aguascalientes (UAA)', caption: 'B.S. in Computer Systems Engineering', description: 'Expected graduation in December 2026.', tone: 'slate' },
+      { group: 'certificaciones', label: 'CERTIFIED', title: 'AWS Academy', sub: 'Cloud Foundations', org: 'AWS Academy', caption: 'Cloud Foundations', description: 'Certifies AWS cloud fundamentals.', tone: 'brown', compact: true },
+      { group: 'certificaciones', label: 'NO. 1206174', title: 'SFC', sub: 'NOV 06 2026', org: 'SCRUMstudy', caption: 'Scrum Fundamentals Certified (SFC)', description: 'Certifies the fundamentals of the Scrum framework.', tone: 'slate', arc: { top: 'SCRUM FUNDAMENTALS', bottom: 'CERTIFIED' } },
+      { group: 'experiencia', label: 'CURRENT', title: 'Foresight', sub: 'SINCE MAR 2026', org: 'Foresight', caption: 'Systems development intern', description: 'Interfaces in React, mobile apps in React Native, and Node.js agents with REST APIs on MySQL.', tone: 'brown' },
+      { group: 'experiencia', label: 'COMPLETED', title: 'Key Depot', sub: 'NOV 2024 – AUG 2025', org: 'Key Depot', caption: 'Software development intern', description: 'Development with Angular, WordPress and PHP.', tone: 'slate', compact: true },
     ],
   },
   handmade: {
@@ -299,5 +322,53 @@ export const homeChapters = {
   contact: {
     stamp: { status: 'STATUS', available: 'AVAILABLE', year: '2026' },
     cta: 'Go to the contact form',
+  },
+}
+
+// Redesigned /cv page. New fields only; the rest of the content lives above.
+// To add a certification: append the object to educationCards, its id to
+// certificationIds and (optionally) its seal to seals. No component changes needed.
+export const cvPage = {
+  rev: '2026-09-17',
+  // DRAFT for Edgar's review: written only from data already in aboutParagraphs,
+  // jobs, educationCards and t.contact.intro. No new achievements or metrics.
+  letter: {
+    heading: 'Cover letter',
+    paragraphs: [
+      'I\'m a Computer Systems Engineering student at the Universidad Autónoma de Aguascalientes, and I expect to graduate in December 2026.',
+      'I\'m currently a systems development intern at Foresight, where I build interfaces with React and mobile apps with React Native, plus Node.js agents and REST APIs connected to MySQL. Before that, at Key Depot, I worked with Angular, WordPress and PHP.',
+      'I like building functional, well-organized solutions centered on the real needs of the people who use them. I\'m available for internships, freelance projects and full-time opportunities.',
+    ],
+    signature: 'Alex Cedeño',
+  },
+  sections: {
+    experience: 'Professional experience',
+    education: 'Education',
+    certifications: 'Certifications',
+    skills: 'Skills',
+    document: 'CV as PDF',
+  },
+  educationIds: ['FORM-001'],
+  certificationIds: ['FORM-002', 'FORM-003'],
+  seals: {
+    'EXP-001': { label: 'CURRENT', title: 'Foresight', sub: 'SINCE MAR 2026', tone: 'brown' },
+    'EXP-002': { label: 'COMPLETED', title: 'Key Depot', sub: 'NOV 2024 – AUG 2025', tone: 'slate', compact: true },
+    'FORM-001': { label: 'GRADUATING', title: 'UAA', sub: 'DEC 2026', tone: 'slate' },
+    'FORM-002': { label: 'CERTIFIED', title: 'AWS Academy', sub: 'MAY 2026', tone: 'brown', compact: true },
+    'FORM-003': { label: 'CERTIFIED', title: 'SFC', sub: 'NOV 2026', tone: 'slate' },
+  },
+  periods: { 'FORM-001': 'Graduation Dec 2026' },
+  skillsLine: 'The full stack, with level and where I used it, has its own page.',
+  skillsCta: 'View skills',
+  pdf: {
+    file: 'Edgar-Cedeno-CV-EN.pdf',
+    intro: 'PDF version of the résumé, to read here or take with you.',
+    download: 'Download CV',
+    preview: 'View preview',
+    openNewTab: 'Open in new tab',
+    close: 'Close preview',
+    dialogLabel: 'CV PDF preview',
+    mobileNote: 'Your browser can\'t show embedded PDFs. Open it in a new tab or download it.',
+    missing: 'The CV PDF is not available right now.',
   },
 }

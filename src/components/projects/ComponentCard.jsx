@@ -7,7 +7,7 @@ export default function ComponentCard({ component, detail }) {
   const images = detail.images ?? []
 
   return (
-    <article className="pj-card">
+    <article className="pj-card card-fx">
       {images.length > 0 && (
         <div className="pj-card-media">
           {images.map((img) => (

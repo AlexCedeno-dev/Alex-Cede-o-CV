@@ -3,6 +3,8 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 const AccessibilityContext = createContext(null)
 const STORAGE_KEY = 'site-a11y'
 const FONT_SIZES = ['normal', 'lg', 'xl']
+// Tema claro por defecto (ignora prefers-color-scheme en la primera visita);
+// 'system' sigue disponible en el panel. Mantener en sync con el script de index.html.
 const THEMES = ['light', 'dark', 'system']
 
 function loadInitial() {
@@ -13,13 +15,13 @@ function loadInitial() {
         fontSize: FONT_SIZES.includes(saved.fontSize) ? saved.fontSize : 'normal',
         contrast: !!saved.contrast,
         underline: !!saved.underline,
-        theme: THEMES.includes(saved.theme) ? saved.theme : 'system',
+        theme: THEMES.includes(saved.theme) ? saved.theme : 'light',
       }
     }
   } catch {
     // localStorage inaccesible o valor corrupto: seguimos con los valores por defecto.
   }
-  return { fontSize: 'normal', contrast: false, underline: false, theme: 'system' }
+  return { fontSize: 'normal', contrast: false, underline: false, theme: 'light' }
 }
 
 export function AccessibilityProvider({ children }) {

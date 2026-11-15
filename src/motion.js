@@ -21,6 +21,16 @@ export const heroTiming = {
   stamp: 0.62,
 }
 
+// Cards (Home § II, /cv, /proyectos): entrada corta (10px) y el sello se estampa
+// después de que la card ya apareció (cardStampDelay, en segundos).
+export const cardRevealVariants = {
+  hidden: { opacity: 0, y: 10 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: revealEase } },
+}
+export const cardStampDelay = 0.28
+export const cardStampSpring = { type: 'spring', duration: 0.5, bounce: 0.3 }
+export const cardStampFrom = 1.08
+
 export const revealViewport = { once: true, amount: 0.15 }
 
 export const revealVariants = {
