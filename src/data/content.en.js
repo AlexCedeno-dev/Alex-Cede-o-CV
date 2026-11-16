@@ -278,7 +278,7 @@ export const homeChapters = {
       experiencia: 'Experience',
     },
     items: [
-      { group: 'formacion', label: 'GRADUATING', title: 'UAA', sub: 'DEC 2026', org: 'Universidad Autónoma de Aguascalientes (UAA)', caption: 'B.S. in Computer Systems Engineering', description: 'Expected graduation in December 2026.', tone: 'slate' },
+      { group: 'formacion', label: 'GRADUATING', title: 'UAA', sub: 'DEC 2026', org: 'Universidad Autónoma de Aguascalientes (UAA)', caption: 'Computer Systems Engineering', description: 'Expected graduation in December 2026.', tone: 'slate' },
       { group: 'certificaciones', label: 'CERTIFIED', title: 'AWS Academy', sub: 'Cloud Foundations', org: 'AWS Academy', caption: 'Cloud Foundations', description: 'Certifies AWS cloud fundamentals.', tone: 'brown', compact: true },
       { group: 'certificaciones', label: 'NO. 1206174', title: 'SFC', sub: 'NOV 06 2026', org: 'SCRUMstudy', caption: 'Scrum Fundamentals Certified (SFC)', description: 'Certifies the fundamentals of the Scrum framework.', tone: 'slate', arc: { top: 'SCRUM FUNDAMENTALS', bottom: 'CERTIFIED' } },
       { group: 'experiencia', label: 'CURRENT', title: 'Foresight', sub: 'SINCE MAR 2026', org: 'Foresight', caption: 'Systems development intern', description: 'Interfaces in React, mobile apps in React Native, and Node.js agents with REST APIs on MySQL.', tone: 'brown' },
