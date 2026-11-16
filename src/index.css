@@ -1108,7 +1108,8 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
 @media (max-width: 640px){ .formacion-meta{ align-items:flex-start; } }
 .formacion-period{ font-family: var(--font); font-size: 0.78125rem; color: var(--ink-dim); white-space:nowrap; }
 .formacion-detalle{ font-size: 0.875rem; color: var(--ink-dim); max-width: 68ch; margin-bottom: 8px; }
-.formacion-item .link{ font-family: var(--font); font-weight:600; font-size:0.78125rem; color: var(--stamp); display:inline-block; margin-bottom:8px; }
+.cred-links{ display:flex; flex-wrap:wrap; gap: 6px 16px; margin-bottom: 8px; }
+.formacion-item .link{ font-family: var(--font); font-weight:600; font-size:0.78125rem; color: var(--stamp); display:inline-block; }
 .formacion-item .link:hover{ text-decoration: underline; }
 
 /* ---------- skills ---------- */
@@ -1406,6 +1407,9 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
 .cv-seal .seal-title{ font-size: 14px; }
 .cv-seal.seal-compact .seal-title{ font-size: 12px; }
 .cv-seal.seal-compact .seal-sub{ font-size: 6.5px; }
+/* arco: el sello de /cv es chico, el texto curvo y el centro se ajustan a su escala */
+.cv-seal .seal-arc text{ font-size: 6.5px; letter-spacing: 0.5px; }
+.cv-seal.seal-has-arc .seal-text{ max-width: 60%; gap: 1px; }
 .cv-card-date{
   font-family: var(--font); font-size: 0.78125rem; color: var(--ink-dim);
   font-variant-numeric: tabular-nums; margin-bottom: 8px;
@@ -1425,7 +1429,8 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
 .cv-card-facts div{ display:flex; gap: 6px; align-items: baseline; }
 .cv-card-facts dd{ margin: 0; color: var(--ink); }
 .cv-card-mono{ font-family: var(--font); font-variant-numeric: tabular-nums; }
-.cv-card-link{ display:inline-block; margin-top: 8px; font-family: var(--font); font-weight:600; font-size:0.78125rem; color: var(--verified); }
+.cv-card-links{ display:flex; flex-wrap:wrap; gap: 6px 16px; margin-top: 8px; }
+.cv-card-link{ display:inline-block; font-family: var(--font); font-weight:600; font-size:0.78125rem; color: var(--verified); }
 .cv-card-link:hover{ text-decoration: underline; }
 .cv-card > .job-ref{ margin-top: 12px; }
 @media (max-width: 640px){

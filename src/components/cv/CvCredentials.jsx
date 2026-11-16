@@ -46,16 +46,21 @@ export default function CvCredentials({ numero, idsKey, headingKey, anchor }) {
                   ))}
                 </dl>
               )}
-              {item.link && (
-                <a
-                  className="link cv-card-link fx-link"
-                  href={item.link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={item.link.ariaLabel}
-                >
-                  {item.link.label}
-                </a>
+              {item.links && (
+                <div className="cv-card-links">
+                  {item.links.map((link) => (
+                    <a
+                      key={link.href}
+                      className="link cv-card-link fx-link"
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={link.ariaLabel}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
               )}
               <p className="folio job-ref">{t.education.ref} {item.id}</p>
             </Reveal>

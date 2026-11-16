@@ -1,30 +1,12 @@
-import { useId } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import ChapterHead from './ChapterHead'
+import SealArc from '../SealArc'
 import { useContent } from '../../data/useContent'
 import Reveal from '../Reveal'
 import { revealViewport, cardStampSpring, cardStampDelay, cardStampFrom } from '../../motion'
 
 // Rotación fija por posición (se repite si hay más sellos que valores).
 const TILTS = [-4, 3, -2, 4]
-
-// Texto curvo opcional sobre el borde del sello (seal.arc = { top, bottom }).
-// Es decorativo: el nombre completo va también en la figcaption.
-function SealArc({ arc }) {
-  const id = useId()
-  return (
-    <svg className="seal-arc" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-      <path id={`${id}-top`} d="M 13 50 A 37 37 0 0 1 87 50" fill="none" />
-      <path id={`${id}-bottom`} d="M 9 50 A 41 41 0 0 0 91 50" fill="none" />
-      {arc.top && (
-        <text><textPath href={`#${id}-top`} startOffset="50%" textAnchor="middle">{arc.top}</textPath></text>
-      )}
-      {arc.bottom && (
-        <text><textPath href={`#${id}-bottom`} startOffset="50%" textAnchor="middle">★ {arc.bottom} ★</textPath></text>
-      )}
-    </svg>
-  )
-}
 
 // § II Sellos, en apartados (homeChapters.seals.groups). Se alimenta del array
 // homeChapters.seals.items: agregar un sello es agregar un objeto con su `group`,

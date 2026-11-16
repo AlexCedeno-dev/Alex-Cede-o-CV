@@ -55,7 +55,7 @@ export const educationCards = [
     org: 'Cloud Foundations, Amazon Web Services',
     period: 'Mayo 2026',
     status: { type: 'verified', label: 'obtenida' },
-    link: { href: 'https://www.credly.com/go/Zj2c779G', label: 'Ver credencial ↗' },
+    links: [{ href: 'https://www.credly.com/go/Zj2c779G', label: 'Ver credencial ↗' }],
   },
   {
     id: 'FORM-003',
@@ -68,11 +68,37 @@ export const educationCards = [
       { label: 'ID de credencial', value: '1206174', mono: true },
       { label: 'Vigencia', value: 'Sin fecha de expiración' },
     ],
-    link: {
-      href: 'https://c46e136a583f7e334124-ac22991740ab4ff17e21daf2ed577041.ssl.cf1.rackcdn.com/Certificate/ScrumFundamentalsCertified-EDGARALEJANDROCEDE%C3%91OSU%C3%81REZ-1206174-20261106.pdf',
-      label: 'Ver certificado ↗',
-      ariaLabel: 'Ver certificado Scrum Fundamentals Certified en PDF (se abre en una pestaña nueva)',
-    },
+    links: [
+      {
+        href: 'https://c46e136a583f7e334124-ac22991740ab4ff17e21daf2ed577041.ssl.cf1.rackcdn.com/Certificate/ScrumFundamentalsCertified-EDGARALEJANDROCEDE%C3%91OSU%C3%81REZ-1206174-20261106.pdf',
+        label: 'Ver certificado ↗',
+        ariaLabel: 'Ver certificado Scrum Fundamentals Certified en PDF (se abre en una pestaña nueva)',
+      },
+      {
+        href: 'https://www.scrumstudy.com/certification/verify?type=SFC&number=1206174',
+        label: 'Verificar credencial ↗',
+        ariaLabel: 'Verificar la credencial Scrum Fundamentals Certified en el sitio de SCRUMstudy (se abre en una pestaña nueva)',
+      },
+    ],
+  },
+  {
+    id: 'FORM-004',
+    title: 'AWS Academy Graduate, Cloud Security Foundations',
+    org: 'Amazon Web Services, AWS Academy',
+    period: '16 nov 2026',
+    date: '2026-11-16',
+    status: { type: 'verified', label: 'obtenida' },
+    facts: [
+      { label: 'Horas del curso', value: '20 h' },
+      { label: 'Emisor del badge', value: 'Credly' },
+    ],
+    links: [
+      {
+        href: 'https://www.credly.com/go/PHIyDmLF',
+        label: 'Ver credencial ↗',
+        ariaLabel: 'Ver credencial AWS Academy Graduate, Cloud Security Foundations en Credly (se abre en una pestaña nueva)',
+      },
+    ],
   },
 ]
 
@@ -281,6 +307,7 @@ export const homeChapters = {
       { group: 'formacion', label: 'EGRESO', title: 'UAA', sub: 'DIC 2026', org: 'Universidad Autónoma de Aguascalientes (UAA)', caption: 'Ing. en Sistemas Computacionales', description: 'Egreso previsto en diciembre de 2026.', tone: 'slate' },
       { group: 'certificaciones', label: 'CERTIFICADO', title: 'AWS Academy', sub: 'Cloud Foundations', org: 'AWS Academy', caption: 'Cloud Foundations', description: 'Acredita los fundamentos de la nube de AWS.', tone: 'brown', compact: true },
       { group: 'certificaciones', label: 'N.º 1206174', title: 'SFC', sub: '06 NOV 2026', org: 'SCRUMstudy', caption: 'Scrum Fundamentals Certified (SFC)', description: 'Acredita los fundamentos del marco Scrum.', tone: 'slate', arc: { top: 'SCRUM FUNDAMENTALS', bottom: 'CERTIFIED' } },
+      { group: 'certificaciones', label: 'CERTIFICADO', title: 'AWS Academy', sub: 'NOV 2026', org: 'AWS Academy', caption: 'Cloud Security Foundations', description: 'Acredita los fundamentos de ciberseguridad en la nube.', tone: 'brown', compact: true, arc: { top: 'CLOUD SECURITY', bottom: 'FOUNDATIONS' } },
       { group: 'experiencia', label: 'ACTUAL', title: 'Foresight', sub: 'DESDE MAR 2026', org: 'Foresight', caption: 'Becario en desarrollo de sistemas', description: 'Interfaces con React, apps móviles con React Native y agentes en Node.js con APIs REST sobre MySQL.', tone: 'brown' },
       { group: 'experiencia', label: 'CONCLUIDO', title: 'Key Depot', sub: 'NOV 2024 – AGO 2025', org: 'Key Depot', caption: 'Becario en desarrollo de software', description: 'Desarrollo con Angular, WordPress y PHP.', tone: 'slate', compact: true },
     ],
@@ -349,7 +376,7 @@ export const cvPage = {
     document: 'CV en PDF',
   },
   educationIds: ['FORM-001'],
-  certificationIds: ['FORM-002', 'FORM-003'],
+  certificationIds: ['FORM-002', 'FORM-003', 'FORM-004'],
   // Sello por id de experiencia o formación.
   seals: {
     'EXP-001': { label: 'ACTUAL', title: 'Foresight', sub: 'DESDE MAR 2026', tone: 'brown' },
@@ -357,6 +384,7 @@ export const cvPage = {
     'FORM-001': { label: 'EGRESO', title: 'UAA', sub: 'DIC 2026', tone: 'slate' },
     'FORM-002': { label: 'CERTIFICADO', title: 'AWS Academy', sub: 'MAYO 2026', tone: 'brown', compact: true },
     'FORM-003': { label: 'CERTIFICADO', title: 'SFC', sub: 'NOV 2026', tone: 'slate' },
+    'FORM-004': { label: 'CERTIFICADO', title: 'AWS Academy', sub: 'NOV 2026', tone: 'brown', compact: true, arc: { top: 'CLOUD SECURITY', bottom: 'FOUNDATIONS' } },
   },
   periods: { 'FORM-001': 'Graduación dic 2026' },
   skillsLine: 'El stack completo, con nivel y dónde lo usé, está en su propia página.',

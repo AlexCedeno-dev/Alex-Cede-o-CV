@@ -25,10 +25,14 @@ export default function Formacion() {
                 </div>
               </div>
               {item.detalle && <p className="formacion-detalle">{item.detalle}</p>}
-              {item.link && (
-                <a className="link" href={item.link.href} target="_blank" rel="noopener">
-                  {item.link.label}
-                </a>
+              {item.links && (
+                <div className="cred-links">
+                  {item.links.map((link) => (
+                    <a className="link" key={link.href} href={link.href} target="_blank" rel="noopener" aria-label={link.ariaLabel}>
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
               )}
               <p className="folio formacion-ref">{t.education.ref} {item.id}</p>
             </div>
